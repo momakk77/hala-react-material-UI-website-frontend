@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ /* html{
+  @media screen(min-width: 900px) {
+    font-size: 13px;
+  }
+
+  @media screen(min-width: 1400px) {
+    font-size: 17px;
+  }
+  
+  @media screen(min-width: 1900px) { 
+    font-size: 20px;
+  }
+}   */
+
+:root {
+  --unnamed-color-9f8965: #9F8965;
+  --unnamed-color-cea350: #CEA350;
+  --unnamed-color-deb668: #DEB668;
+  --unnamed-color-000000: #000000;
+  --unnamed-color-2c2a26: #2C2A26;
+  --unnamed-color-7f7c76: #7F7C76;
+  --unnamed-color-afaba1: #AFABA1;
+  --unnamed-color-e2e1df: #E2E1DF;
+  --unnamed-color-faf9e0: #FAF9E0;
+  --unnamed-color-ffffff: #FFFFFF;
+  
+  /* Font/text values */
+  --unnamed-font-family-ltc-bodoni-175-pro: LTC Bodoni 175 Pro;
+  --unnamed-font-style-normal: normal;
+  --unnamed-font-weight-normal: normal;
+  --unnamed-font-size-16: 16px;
+  --unnamed-font-size-20: 20px;
+  --unnamed-character-spacing-0-48: 0.48px;
+  --unnamed-character-spacing-0-6: 0.6px;
+  --unnamed-line-spacing-24: 24px;
+  --unnamed-line-spacing-26: 26px;
+  --unnamed-line-spacing-36: 36px;
+  --unnamed-text-transform-titlecase: titlecase;
+  --unnamed-font-family-red-hat: 'Red Hat Text', sans-serif;
+  }
+  body {
+    font-family: 'Red Hat Text', sans-serif;
+    font-family: 'Bodoni Moda', serif;
+  }
+  /* Character Styles */
+  .unnamed-character-style-1 {
+  font-family: var(--unnamed-font-family-ltc-bodoni-175-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-16);
+  line-height: var(--unnamed-line-spacing-26);
+  letter-spacing: var(--unnamed-character-spacing-0-48);
+  color: var(--unnamed-color-7f7c76);
+  }
+  .unnamed-character-style-2 {
+  font-family: var(--unnamed-font-family-ltc-bodoni-175-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-16);
+  line-height: var(--unnamed-line-spacing-36);
+  letter-spacing: var(--unnamed-character-spacing-0-48);
+  color: var(--unnamed-color-7f7c76);
+  }
+  .unnamed-character-style-3 {
+  font-family: var(--unnamed-font-family-ltc-bodoni-175-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-20);
+  line-height: var(--unnamed-line-spacing-24);
+  letter-spacing: var(--unnamed-character-spacing-0-6);
+  color: var(--unnamed-color-ffffff);
+  text-transform: var(--unnamed-text-transform-titlecase);
+  }
+.gap-10 {
+  gap: 10px;
+}
+
+.gap-15 {
+  gap: 15px;
+}
+
+.gap-30 {
+  gap: 30px;
+}
