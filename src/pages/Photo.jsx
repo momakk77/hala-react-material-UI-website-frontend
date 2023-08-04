@@ -18,15 +18,17 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 import PhotoDialog from "../components/PhotoDialog";
 import axios from "axios";
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 const Img = styled("img")((props) => ({
   display: "block",
+  objectFit: "contain",
   width: "100%",
-  objectFit: "cover",
-  height: "20rem",
-  [props.theme.breakpoints.up("sm")]: {
-    height: "600px",
-  },
+  height: "650px",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  [props.theme.breakpoints.up("sm")]: {},
 }));
 
 function BootstrapDialogTitle(props) {
@@ -41,8 +43,8 @@ function BootstrapDialogTitle(props) {
           onClick={onClose}
           sx={{
             position: "absolute",
-            right: 8,
-            top: 8,
+            right: 20,
+            top: 20,
             color: (theme) => theme.palette.grey[500],
           }}
         >
@@ -89,7 +91,13 @@ const Photo = () => {
     id && getAImage(id);
   }, [id]);
   const [open, setOpen] = React.useState(false);
-
+  const [openSnack, setOpenSnack] = React.useState(false);
+  const copyMe = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    setOpenSnack(true);
+    console.log(url);
+  };
   const handleClickOpen = (id) => {
     setSelectedImageId(id);
     setOpen(true);
@@ -97,6 +105,18 @@ const Photo = () => {
   const handleClose = () => {
     setOpen(false);
   };
+  const handleClickSnack = () => {
+    setOpenSnack(true);
+  };
+
+  const handleCloseSnack = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnack(false);
+  };
+
   const navigate = useNavigate();
   const navigateImage = (id) => {
     id && navigate(`/photo/${id}`);
@@ -141,11 +161,11 @@ const Photo = () => {
         >
           <IconButton
             sx={{
-              color: "var(--unnamed-color-e2e1df)",
+              color: "#ACACAC",        
             }}
             onClick={() => navigate("/collection")}
           >
-            <CloseIcon />
+            <CloseIcon sx={{ fontSize: "larger" }} />
           </IconButton>
         </Box>
 
@@ -186,7 +206,7 @@ const Photo = () => {
         >
           <Grid
             item
-            md={1.5}
+            md={2}
             sm={3}
             alignSelf={"center"}
             sx={{
@@ -287,6 +307,7 @@ const Photo = () => {
             <Button
               variant="outlined"
               disableElevation
+              onClick={copyMe}
               sx={{
                 backgroundColor: "transparent",
                 color: "var(--unnamed-color-9f8965)",
@@ -302,6 +323,15 @@ const Photo = () => {
             >
               +Share
             </Button>
+            <Snackbar open={openSnack} autoHideDuration={4000} onClose={handleCloseSnack}>
+              <Alert
+                onClose={handleCloseSnack}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                Link Copied 
+              </Alert>
+            </Snackbar>
           </Grid>
 
           <Grid item sm={7}>

@@ -3,6 +3,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
+
 const Home = () => {
   const navigate = useNavigate();
   return (
@@ -11,7 +12,7 @@ const Home = () => {
         sx={{
           width: "100%",
           height: "100vh",
-          backgroundImage: 'url("/images/547711.jpg")',
+          backgroundImage: 'url("/images/DSC01406 copy.jpg")',
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -48,7 +49,7 @@ const Home = () => {
               sx={{
                 "&:hover": {
                   backgroundColor: "var(--unnamed-color-000000)",
-                  opacity: 0.9,
+                  opacity: 1,
                 },
                 background:
                   " var(--unnamed-color-000000) 0% 0% no-repeat padding-box",
@@ -70,11 +71,11 @@ const Home = () => {
         sx={{
           width: "100%",
           height: "100vh",
-          backgroundImage: 'url("/images/547711.jpg")',
+          backgroundImage: 'url("/images/DSC01406 copy.jpg")',
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          display: { xs: "flex", md: "none" },
+          display: { xs: "block", md: "none" },
         }}
       >
         <Grid

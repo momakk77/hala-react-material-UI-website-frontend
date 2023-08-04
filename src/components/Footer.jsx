@@ -2,14 +2,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Grid, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import ButtonBase from "@mui/material/ButtonBase";
-import { CheckBox } from "@mui/icons-material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBehance } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
   const navigate = useNavigate();
@@ -17,11 +15,11 @@ function Footer() {
     <Container
       disableGutters
       sx={{
-        maxWidth: { sm: "43rem", md: "55rem", lg: "79rem", xl: "118rem" },
+        maxWidth: { xl: "100rem" },
         marginTop: "9rem",
-        background: { xs: "#B28AF8 0% 0% no-repeat padding-box", sm: "none" },
-        borderTop: { sm: "1px solid var(--unnamed-color-e2e1df)" },
-        marginBlockEnd: { sm: "1rem" },
+        background: { xs: "#292929", sm: "none" },
+        borderTop: "1px solid var(--unnamed-color-e2e1df)",
+        marginBlockEnd: { sm: "1rem", xs: "0" },
       }}
     >
       <Grid
@@ -49,7 +47,7 @@ function Footer() {
                 marginTop: "5rem",
               }}
             >
-              Email: example@gmail.com
+               Email: hala.alabed19@gmail.com 
             </Typography>
             <Typography
               sx={{
@@ -60,7 +58,7 @@ function Footer() {
                 marginBottom: "7rem",
               }}
             >
-              Address: Charlotte, North Carolina, United States
+              Address: Istanbul- Doha
             </Typography>
             <Typography
               sx={{
@@ -84,6 +82,7 @@ function Footer() {
             }}
           >
             <IconButton
+              href="https://www.behance.net/halaAlabed"
               sx={{
                 width: "40px",
                 height: "40px",
@@ -94,11 +93,12 @@ function Footer() {
                   opacity: 0.7,
                 },
               }}
-              aria-label="facebook"
+              aria-label="Behance"
             >
-              <FacebookRoundedIcon />
+              <FontAwesomeIcon icon={faBehance} />
             </IconButton>
             <IconButton
+              href="https://www.linkedin.com/in/hala-al-abed-bbb689107"
               sx={{
                 "&:hover": {
                   backgroundColor: "var(--unnamed-color-9f8965)",
@@ -109,11 +109,12 @@ function Footer() {
                 bgcolor: "var(--unnamed-color-9f8965)",
                 color: "white",
               }}
-              aria-label="twitter"
+              aria-label="Linkedin"
             >
-              <TwitterIcon />
+              <FontAwesomeIcon icon={faLinkedinIn} />
             </IconButton>
             <IconButton
+              href="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
               sx={{
                 "&:hover": {
                   backgroundColor: "var(--unnamed-color-9f8965)",
@@ -126,22 +127,7 @@ function Footer() {
               }}
               aria-label="instagram"
             >
-              <InstagramIcon />
-            </IconButton>
-            <IconButton
-              sx={{
-                "&:hover": {
-                  backgroundColor: "var(--unnamed-color-9f8965)",
-                  opacity: 0.7,
-                },
-                width: "40px",
-                height: "40px",
-                bgcolor: "var(--unnamed-color-9f8965)",
-                color: "white",
-              }}
-              aria-label="youtube"
-            >
-              <YouTubeIcon />
+              <FontAwesomeIcon icon={faInstagram} />
             </IconButton>
           </Box>
         </Grid>
@@ -154,156 +140,26 @@ function Footer() {
               display: { xs: "block", sm: "none" },
               marginLeft: "0.3rem",
             }}
-          >
-            <Box>
-              <Typography
-                sx={{
-                  font: "normal normal normal 1.5rem Bodoni Moda",
-                  color: "#FFFFFF",
-                  letterSpacing: 0.6,
-                  opacity: 1,
-                  marginTop: "10rem",
-                  textTransform: "capitalize",
-                }}
-              >
-                COMPANY
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid container>
-            <Grid
-              xs={6}
-              sx={{
-                display: { xs: "block", sm: "none" },
-                marginLeft: "0.3rem",
-              }}
-            >
-              <Box>
-                <ButtonBase onClick={() => navigate("/about")}>
-                  <Typography
-                    sx={{
-                      font: "normal normal normal 1.1rem Bodoni Moda",
-                      color: "var(--unnamed-color-7f7c76)",
-                      letterSpacing: 0.48,
-                      opacity: 1,
-                      marginTop: "2rem",
-                    }}
-                  >
-                    About Us
-                  </Typography>
-                </ButtonBase>
-              </Box>
-              <Box>
-                <ButtonBase onClick={() => navigate("/contact")}>
-                  <Typography
-                    sx={{
-                      font: "normal normal normal 1.1rem Bodoni Moda",
-                      color: "var(--unnamed-color-7f7c76)",
-                      letterSpacing: 0.48,
-                      opacity: 1,
-                      marginTop: "1.7rem",
-                    }}
-                  >
-                    Contact us
-                  </Typography>
-                </ButtonBase>
-              </Box>
-
-              <Typography
-                sx={{
-                  font: "normal normal normal 1.1rem Bodoni Moda",
-                  color: "var(--unnamed-color-7f7c76)",
-                  letterSpacing: 0.48,
-                  opacity: 1,
-                  marginTop: "1.7rem",
-                }}
-              >
-                Careers
-              </Typography>
-              <Typography
-                sx={{
-                  font: "normal normal normal 1.1rem Bodoni Moda",
-                  color: "var(--unnamed-color-7f7c76)",
-                  letterSpacing: 0.48,
-                  opacity: 1,
-                  marginTop: "1.7rem",
-                }}
-              >
-                Support
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={4}
-              sx={{
-                display: { xs: "block", sm: "none" },
-                marginLeft: "2rem",
-              }}
-            >
-              <Typography
-                sx={{
-                  font: "normal normal normal 1.1rem Bodoni Moda",
-                  color: "var(--unnamed-color-7f7c76)",
-                  letterSpacing: 0.48,
-                  opacity: 1,
-                  marginTop: "2rem",
-                }}
-              >
-                FAQ
-              </Typography>
-              <Typography
-                sx={{
-                  font: "normal normal normal 1.1rem Bodoni Moda",
-                  color: "var(--unnamed-color-7f7c76)",
-                  letterSpacing: 0.48,
-                  opacity: 1,
-                  marginTop: "1.7rem",
-                }}
-              >
-                Terms
-              </Typography>
-              <Typography
-                sx={{
-                  font: "normal normal normal 1.1rem Bodoni Moda",
-                  color: "var(--unnamed-color-7f7c76)",
-                  letterSpacing: 0.48,
-                  opacity: 1,
-                  marginTop: "1.7rem",
-                }}
-              >
-                Privacy
-              </Typography>
-              <Typography
-                sx={{
-                  font: "normal normal normal 1.1rem Bodoni Moda",
-                  color: "var(--unnamed-color-7f7c76)",
-                  letterSpacing: 0.48,
-                  opacity: 1,
-                  marginTop: "1.7rem",
-                }}
-              >
-                Blog
-              </Typography>
-            </Grid>
-          </Grid>
+          ></Grid>
+          <Grid container></Grid>
 
           <Grid
             item
             xs={12}
             sx={{
-              display: { xs: "block", sm: "none" },
-              marginLeft: "0.3rem",
+              display: { xs: "block", sm: "none", },
             }}
           >
             <Box>
               <Typography
                 sx={{
-                  font: "normal normal normal 1.5rem Bodoni Moda",
-                  color: "#FFFFFF",
-                  letterSpacing: 0.6,
-                  opacity: 1,
-                  marginTop: "4rem",
+                  font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 13px/17px Red Hat Text",
+                  color: "var(--unnamed-color-ffffff)",
+                  textAlign: "left",
+                  letterSpacing: 0.39,
                   textTransform: "capitalize",
+                  opacity: 1,
+                  marginTop: "3rem",
                 }}
               >
                 Contact
@@ -314,132 +170,100 @@ function Footer() {
             item
             xs={12}
             sx={{
-              display: { xs: "block", sm: "none" },
+              display: { xs: "initial", sm: "none" },
               marginLeft: "0.3rem",
-              borderBottom: "1px solid #DCC7FF",
             }}
           >
             <Typography
               sx={{
-                font: "normal normal normal 1.1rem Bodoni Moda",
-                color: "var(--unnamed-color-7f7c76)",
-                letterSpacing: 0.48,
+                font: "var(--unnamed-font-style-normal) normal 300 14px/25px Red Hat Text",
+                textAlign: "left",
+                letterSpacing: 0.7,
+                color: "#C4C4C4",
                 opacity: 1,
-                marginTop: "2rem",
               }}
             >
-              Phone: +1 605 722 2032
+              Email: hala.alabed19@gmail.com
             </Typography>
             <Typography
               sx={{
-                font: "normal normal normal 1.1rem Bodoni Moda",
-                color: "var(--unnamed-color-7f7c76)",
-                letterSpacing: 0.48,
+                font: "var(--unnamed-font-style-normal) normal 300 14px/25px Red Hat Text",
+                textAlign: "left",
+                letterSpacing: 0.7,
+                color: "#C4C4C4",
                 opacity: 1,
-                marginTop: "1.3rem",
-              }}
-            >
-              Email: example@gmail.com
-            </Typography>
-            <Typography
-              sx={{
-                font: "normal normal normal 1.1rem Bodoni Moda",
-                color: "var(--unnamed-color-7f7c76)",
-                letterSpacing: 0.48,
-                opacity: 1,
-                marginTop: "1.3rem",
-              }}
-            >
-              Address: Charlotte, North Carolina,
-            </Typography>
-            <Typography
-              sx={{
-                font: "normal normal normal 1.1rem Bodoni Moda",
-                color: "var(--unnamed-color-7f7c76)",
-                letterSpacing: 0.48,
-                opacity: 1,
-                marginTop: "1.3rem",
                 marginBottom: "2rem",
               }}
             >
-              United States
+              Address: Istanbul- Doha
             </Typography>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} borderTop={{xs:"1px solid #DCC7FF", sm: "none"}}>
             <Box
               sx={{
-                marginTop: "3rem",
+                marginTop: "2rem",
+                marginBottom: "2rem",
                 display: { xs: "flex", sm: "none", gap: "13px" },
                 justifyContent: "center",
               }}
             >
               <IconButton
+              href="https://www.behance.net/halaAlabed"
                 sx={{
                   width: "40px",
                   height: "40px",
-                  bgcolor: "#C4A3FD",
+                  bgcolor: "#9F8965",
                   color: "white",
                   "&:hover": {
-                    backgroundColor: "#C4A3FD",
+                    backgroundColor: "#9F8965",
                     opacity: 0.7,
                   },
                 }}
-                aria-label="facebook"
+                aria-label="Behance"
               >
-                <FacebookRoundedIcon />
+                <FontAwesomeIcon icon={faBehance} />
               </IconButton>
               <IconButton
+              href="https://www.linkedin.com/in/hala-al-abed-bbb689107"
                 sx={{
                   "&:hover": {
-                    backgroundColor: "#C4A3FD",
+                    backgroundColor: "#9F8965",
                     opacity: 0.7,
                   },
                   width: "40px",
                   height: "40px",
-                  bgcolor: "#C4A3FD",
+                  bgcolor: "#9F8965",
                   color: "white",
                 }}
-                aria-label="twitter"
+                aria-label="Linkedin"
               >
-                <TwitterIcon />
+                <FontAwesomeIcon icon={faLinkedinIn} />
               </IconButton>
               <IconButton
+              href="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
                 sx={{
                   "&:hover": {
-                    backgroundColor: "#C4A3FD",
+                    backgroundColor: "#9F8965",
                     opacity: 0.7,
                   },
                   width: "40px",
                   height: "40px",
-                  bgcolor: "#C4A3FD",
+                  bgcolor: "#9F8965",
                   color: "white",
                 }}
                 aria-label="instagram"
               >
-                <InstagramIcon />
-              </IconButton>
-              <IconButton
-                sx={{
-                  "&:hover": {
-                    backgroundColor: "#C4A3FD",
-                    opacity: 0.7,
-                  },
-                  width: "40px",
-                  height: "40px",
-                  bgcolor: "#C4A3FD",
-                  color: "white",
-                }}
-                aria-label="youtube"
-              >
-                <YouTubeIcon />
+                <FontAwesomeIcon icon={faInstagram} />
               </IconButton>
             </Box>
             <Typography
               sx={{
                 display: { xs: "flex", sm: "none" },
-                font: "normal normal normal 1.1rem Bodoni Moda",
-                color: "var(--unnamed-color-7f7c76)",
-                letterSpacing: 0.48,
+                font: "var(--unnamed-font-style-normal) normal 300 11px/var(--unnamed-line-spacing-24) Red Hat Text",
+                textAlign: "center",
+                color: "#C4C4C4",
+                letterSpacing: 0.55,
+                textTransform: "uppercase",
                 opacity: 1,
                 marginTop: "1.5rem",
                 marginBottom: "3rem",

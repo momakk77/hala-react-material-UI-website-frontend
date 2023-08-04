@@ -71,8 +71,7 @@ export default function Contact() {
                 opacity: 1,
               }}
             >
-              For all sales and commission inquiries, please contact the Rebecca
-              Hossack Art Gallery:
+              For all sales and commission inquiries, please contact: 
             </Typography>
 
             <Typography
@@ -84,10 +83,11 @@ export default function Contact() {
                 opacity: 1,
               }}
             >
-              hala.art@gmail.com <br />
-              (+1) 123 456 7891 <br /> 123 Mockup St., New York
+              hala.art@gmail.com  <br />
+              Istanbul - Turkey 
             </Typography>
             <IconButton
+            href="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
               sx={{
                 width: "40px",
                 height: "40px",

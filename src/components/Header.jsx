@@ -1,5 +1,5 @@
-import React from "react";
-import {useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -21,6 +21,8 @@ const pages = [
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
+  const location = useLocation();
+  console.log(location);
   const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -33,17 +35,18 @@ const Header = () => {
   const navigateTo = (path) => {
     navigate(path);
   };
+  // useEffect(() => {
+  // }, []);
   return (
     <>
       <AppBar
         position="static"
         elevation={0}
         sx={{
-          paddingBottom:{xs: "1.2rem"},
+          paddingBottom: { xs: "1.2rem" },
           bgcolor: "white",
           borderBottom: "1px solid var(--unnamed-color-e2e1df)",
           marginBottom: "50px",
-          
         }}
         disableGutters
       >
@@ -57,28 +60,33 @@ const Header = () => {
               textDecoration: "none",
               flexGrow: 1,
               opacity: 1,
-              fontSize: "1.7rem"
+              fontSize: "1.7rem",
             }}
           >
             HALA <br />
             ALABED
           </Typography>
-          
+
           <Typography
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               fontWeight: 600,
-              color: "black", 
+              color: "black",
               textDecoration: "none",
               opacity: 1,
               fontSize: "1.2rem",
-              
             }}
           >
-            HALA <br/> ALABED
+            HALA <br /> ALABED
           </Typography>
-          <Box sx={{ justifyContent: "flex-end", flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              justifyContent: "flex-end",
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -104,7 +112,6 @@ const Header = () => {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "flex", md: "none" },
-                
               }}
             >
               {pages.map((page) => (
@@ -127,7 +134,8 @@ const Header = () => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {pages.map((page) => (
+            {pages.map((page, index) => (
+              
               <Button
                 key={page.name}
                 onClick={() => {
@@ -136,7 +144,9 @@ const Header = () => {
                 }}
                 sx={{
                   my: 4,
-                  color: "var(--unnamed-color-2c2a26)",
+                  color:  location.pathname === page.path ?
+                      "var( --unnamed-color-9f8965)" :
+                      "var(--unnamed-color-2c2a26)",    
                   display: "block",
                   px: 4,
                   paddingRight: page.hasPaddingRight && "0px",
