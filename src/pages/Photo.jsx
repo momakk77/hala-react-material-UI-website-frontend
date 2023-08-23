@@ -17,6 +17,7 @@ import PropTypes from "prop-types";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 import PhotoDialog from "../components/PhotoDialog";
+import ShareDialog from "../components/ShareDialog";
 import axios from "axios";
 
 const Img = styled("img")((props) => ({
