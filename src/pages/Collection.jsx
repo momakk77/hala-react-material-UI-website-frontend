@@ -179,7 +179,7 @@ const Collection = () => {
             <Grid item>
               <Typography
                 sx={{
-                  font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 14px/var(--unnamed-line-spacing-26) Red Hat Tex",
+                  font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 14px/var(--unnamed-line-spacing-26) Red Hat Text",
                   color: "var(--unnamed-color-7f7c76)",
                   letterSpacing: 0.42,
                   opacity: 1,
@@ -201,6 +201,7 @@ const Collection = () => {
           </Grid>
         ))}
       </Grid>
+      {getAllImages.length >= 8 && selectedLimit > getAllImages.length || getAllImages.length < 8 ? null : (
       <Grid
         container
         sx={{
@@ -236,6 +237,8 @@ const Collection = () => {
           Load More
         </Button>
       </Grid>
+      )}
+       {getAllImages.length >= 8 && selectedLimit > getAllImages.length || getAllImages.length < 8 ? null : (
       <Grid
         container
         sx={{
@@ -270,6 +273,7 @@ const Collection = () => {
           Load More
         </Button>
       </Grid>
+       )}
     </>
   );
 };

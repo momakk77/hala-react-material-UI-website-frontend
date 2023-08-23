@@ -14,7 +14,7 @@ const pages = [
   { name: "Home", path: "/" },
   { name: "Collection", path: "/collection" },
   { name: "About", path: "/about" },
-  { name: "Articles", path: "/articles" },
+  // { name: "Articles", path: "/articles" },
   { name: "Contact Us", path: "/contact", hasPaddingRight: true },
 ];
 
@@ -51,6 +51,7 @@ const Header = () => {
         disableGutters
       >
         <Toolbar disableGutters>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <Typography
             sx={{
               mr: 2,
@@ -66,7 +67,8 @@ const Header = () => {
             HALA <br />
             ALABED
           </Typography>
-
+          </Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
           <Typography
             sx={{
               mr: 2,
@@ -80,6 +82,7 @@ const Header = () => {
           >
             HALA <br /> ALABED
           </Typography>
+          </Link>
           <Box
             sx={{
               justifyContent: "flex-end",

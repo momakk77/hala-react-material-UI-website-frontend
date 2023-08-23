@@ -18,8 +18,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 import PhotoDialog from "../components/PhotoDialog";
 import axios from "axios";
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 
 const Img = styled("img")((props) => ({
   display: "block",
@@ -28,7 +26,9 @@ const Img = styled("img")((props) => ({
   height: "650px",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  [props.theme.breakpoints.up("sm")]: {},
+  [props.theme.breakpoints.up("xl")]: {
+    height: "100vh",
+  },
 }));
 
 function BootstrapDialogTitle(props) {
@@ -91,13 +91,14 @@ const Photo = () => {
     id && getAImage(id);
   }, [id]);
   const [open, setOpen] = React.useState(false);
-  const [openSnack, setOpenSnack] = React.useState(false);
-  const copyMe = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
-    setOpenSnack(true);
-    console.log(url);
-  };
+  const [openShare, setOpenShare] = React.useState(false);
+  // const [openSnack, setOpenSnack] = React.useState(false);
+  // const copyMe = () => {
+  //   const url = window.location.href;
+  //   navigator.clipboard.writeText(url);
+  //   setOpenSnack(true);
+  //   console.log(url);
+  // };
   const handleClickOpen = (id) => {
     setSelectedImageId(id);
     setOpen(true);
@@ -105,17 +106,24 @@ const Photo = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleClickSnack = () => {
-    setOpenSnack(true);
-  };
 
-  const handleCloseSnack = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setOpenSnack(false);
+  const handleClickOpenShare = () => {
+    setOpenShare(true);
   };
+  const handleCloseShare = () => {
+    setOpenShare(false);
+  };
+  // const handleClickSnack = () => {
+  //   setOpenSnack(true);
+  // };
+
+  // const handleCloseSnack = (event, reason) => {
+  //   if (reason === "clickaway") {
+  //     return;
+  //   }
+
+  //   setOpenSnack(false);
+  // };
 
   const navigate = useNavigate();
   const navigateImage = (id) => {
@@ -307,7 +315,9 @@ const Photo = () => {
             <Button
               variant="outlined"
               disableElevation
-              onClick={copyMe}
+              onClick={
+                handleClickOpenShare
+               }
               sx={{
                 backgroundColor: "transparent",
                 color: "var(--unnamed-color-9f8965)",
@@ -323,7 +333,7 @@ const Photo = () => {
             >
               +Share
             </Button>
-            <Snackbar open={openSnack} autoHideDuration={4000} onClose={handleCloseSnack}>
+            {/* <Snackbar open={openSnack} autoHideDuration={4000} onClose={handleCloseSnack}>
               <Alert
                 onClose={handleCloseSnack}
                 severity="success"
@@ -331,15 +341,15 @@ const Photo = () => {
               >
                 Link Copied 
               </Alert>
-            </Snackbar>
+            </Snackbar> */}
           </Grid>
-
           <Grid item sm={7}>
             <Img src={`/${getImage.imagePath}`} alt="" />
           </Grid>
         </Grid>
       </Box>
       <PhotoDialog setOpen={setOpen} open={open} imageId={selectedImageId} />
+      <ShareDialog setOpen={setOpenShare} open={openShare} />
     </>
   );
 };

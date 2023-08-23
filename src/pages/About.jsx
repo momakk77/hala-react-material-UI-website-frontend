@@ -31,7 +31,7 @@ export default function About() {
    
     <Grid container sx={{ paddingTop: "3.5rem" }} spacing={2}>
       <Grid item sm={12} md={6} xl={5} xs={12}>
-        <Img src="images/DSC01406 copy.jpg" alt="" />
+        <Img src="images/about.png" alt="" />
       </Grid>
       <Grid item sm={12} md={6} xs={12}>
         <Typography

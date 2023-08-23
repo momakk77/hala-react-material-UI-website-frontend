@@ -1,27 +1,75 @@
-import React from "react";
+
 import { Box, Typography, Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
+const images = ["/images/1.jpg", "/images/2.jpg","/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"];
+const slideDuration = 5000;
 
 const Home = () => {
   const navigate = useNavigate();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, slideDuration);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+  
+
+  
+  const handleKeyboardNavigation = (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      const nextIndex = (currentImageIndex + 1) % images.length;
+      setCurrentImageIndex(nextIndex);
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      const prevIndex = (currentImageIndex - 1 + images.length) % images.length;
+      setCurrentImageIndex(prevIndex);
+    }
+  };
+
+  const backgroundImageStyle = {
+    backgroundImage: `url(${images[currentImageIndex]})`,
+  };
+
   return (
     <>
       <Box
         sx={{
+          position: "relative",
           width: "100%",
           height: "100vh",
-          backgroundImage: 'url("/images/DSC01406 copy.jpg")',
+          ...backgroundImageStyle,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           display: { xs: "none", md: "flex" },
+          outline: "none",
         }}
+        onKeyDown={handleKeyboardNavigation}
+        tabIndex="0"
       >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.3)", 
+          }}
+        />
         <Grid
           container
           sx={{
+            position: "relative",
             height: "100%",
             width: "100%",
             justifyContent: "center",
@@ -69,18 +117,33 @@ const Home = () => {
       </Box>
       <Box
         sx={{
+          position: "relative",
           width: "100%",
           height: "100vh",
-          backgroundImage: 'url("/images/DSC01406 copy.jpg")',
+          ...backgroundImageStyle,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           display: { xs: "block", md: "none" },
+          outline: "none",
         }}
+        onKeyDown={handleKeyboardNavigation}
+        tabIndex="0"
       >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.3)", // 70% opacity black
+          }}
+        />
         <Grid
           container
           sx={{
+            position: "relative",
             height: "100%",
             width: "100%",
             justifyContent: "center",

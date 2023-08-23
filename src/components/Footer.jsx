@@ -198,7 +198,7 @@ function Footer() {
               Address: Istanbul- Doha
             </Typography>
           </Grid>
-          <Grid item xs={12} borderTop={{xs:"1px solid #DCC7FF", sm: "none"}}>
+          <Grid item xs={12} borderTop={{xs:"1px solid white", sm: "none"}}>
             <Box
               sx={{
                 marginTop: "2rem",
