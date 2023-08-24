@@ -5,7 +5,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
 import Photo from "./pages/Photo";
-import { Menu } from "@mui/material";
+import  Menu  from "./pages/Menu"
 
 
 function App() {
