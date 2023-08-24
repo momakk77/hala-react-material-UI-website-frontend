@@ -90,16 +90,17 @@ const Header = () => {
               display: { xs: "flex", md: "none" },
             }}
           >
+            <Link to="/menu" style={{ textDecoration: "none" }}>
             <IconButton
               size="large"
               aria-label="account of current user"
-              aria-controls="menu-appbar"
+              //aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+            </Link>
+            {/* <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -128,7 +129,7 @@ const Header = () => {
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
           <Box
             sx={{

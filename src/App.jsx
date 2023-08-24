@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
 import Photo from "./pages/Photo";
+import { Menu } from "@mui/material";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="photo/:id" element={<Photo />}/>
+          <Route path="menu" element={<Menu />} />
           <Route path="/" element={<Layout />}>
             <Route path="collection" element={<Collection />} />
             <Route path="about" element={<About />} />

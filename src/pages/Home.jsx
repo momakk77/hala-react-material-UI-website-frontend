@@ -4,41 +4,46 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
-const images = ["/images/1.jpg", "/images/2.jpg","/images/3.jpg", "/images/4.jpg", "/images/5.jpg", "/images/6.jpg"];
+const images = [
+  "/images/1.jpg",
+  "/images/2.jpg",
+  "/images/3.jpg",
+  "/images/4.jpg",
+  "/images/5.jpg",
+  "/images/6.jpg",
+];
 const slideDuration = 5000;
 
 const Home = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, slideDuration);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-  
-
-  
   const handleKeyboardNavigation = (event) => {
     if (event.key === "ArrowRight") {
-      event.preventDefault();
       const nextIndex = (currentImageIndex + 1) % images.length;
       setCurrentImageIndex(nextIndex);
     } else if (event.key === "ArrowLeft") {
-      event.preventDefault();
       const prevIndex = (currentImageIndex - 1 + images.length) % images.length;
       setCurrentImageIndex(prevIndex);
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, slideDuration);
+
+    window.addEventListener("keydown", handleKeyboardNavigation);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("keydown", handleKeyboardNavigation);
+    };
+  }, [currentImageIndex]);
+
   const backgroundImageStyle = {
     backgroundImage: `url(${images[currentImageIndex]})`,
   };
-
   return (
     <>
       <Box
