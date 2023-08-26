@@ -57,6 +57,7 @@ const Home = () => {
           backgroundSize: "cover",
           display: { xs: "none", md: "flex" },
           outline: "none",
+          transition: "background 2s"
         }}
         onKeyDown={handleKeyboardNavigation}
         tabIndex="0"
