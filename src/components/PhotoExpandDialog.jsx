@@ -70,7 +70,7 @@ const config = {
       alert(err.message);
     }
   };
-  console.log(getImage.imagePath)
+  console.log(getImage.imagePath.replace('/photo' , ''))
 
   useEffect(() => {
     imageId && getAImage(imageId);
