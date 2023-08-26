@@ -70,6 +70,7 @@ const config = {
       alert(err.message);
     }
   };
+  console.log(getImage.imagePath)
 
   useEffect(() => {
     imageId && getAImage(imageId);
@@ -100,6 +101,7 @@ const config = {
       >
         
          <Img src={getImage.imagePath.replace('/photo' , '')} alt=""/>
+         
 
       </BootstrapDialog>
     </>
