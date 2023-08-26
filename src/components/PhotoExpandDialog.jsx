@@ -97,7 +97,7 @@ const config = {
           }}
       >
         
-         <Img src={getImage.imagePath} alt=""/>
+         <Img src={getImage.imagePath.replace('/photo' , '')} alt=""/>
 
       </BootstrapDialog>
     </>
