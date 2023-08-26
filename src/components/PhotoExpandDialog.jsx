@@ -42,7 +42,9 @@ BootstrapDialogTitle.propTypes = {
 
 const PhotoExpandDialog = ({ open, setOpen, imageId }) => {
 
-    const [getImage, setGetImage] = useState([]);
+    const [getImage, setGetImage] = useState({
+        imagePath: "", 
+});
     const [loading, setLoading] = useState(false);
 
 
@@ -97,7 +99,7 @@ const config = {
           }}
       >
         
-         <Img src={getImage.imagePath.replace('/photo' , '')} alt=""/>
+         <Img src={getImage.imagePath} alt=""/>
 
       </BootstrapDialog>
     </>
