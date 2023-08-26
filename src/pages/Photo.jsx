@@ -337,9 +337,9 @@ const Photo = () => {
             </Button>
           </Grid>
           <Grid item sm={7}>
-            <Img src={`/${getImage.imagePath}`} alt=""onClick={() =>
+            <Img src={`/${getImage.imagePath}`} alt=""onClick={() =>{
                 handleClickOpenImage(getImage._id)
-               }/>
+             } }/>
           </Grid>
         </Grid>
       </Box>
