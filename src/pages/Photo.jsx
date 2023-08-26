@@ -19,6 +19,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import PhotoDialog from "../components/PhotoDialog";
 import ShareDialog from "../components/ShareDialog";
 import axios from "axios";
+import PhotoExpandDialog from "../components/PhotoExpandDialog"
 
 const Img = styled("img")((props) => ({
   display: "block",
@@ -93,13 +94,7 @@ const Photo = () => {
   }, [id]);
   const [open, setOpen] = React.useState(false);
   const [openShare, setOpenShare] = React.useState(false);
-  // const [openSnack, setOpenSnack] = React.useState(false);
-  // const copyMe = () => {
-  //   const url = window.location.href;
-  //   navigator.clipboard.writeText(url);
-  //   setOpenSnack(true);
-  //   console.log(url);
-  // };
+  const [openImage, setOpenImage] = React.useState(false);
   const handleClickOpen = (id) => {
     setSelectedImageId(id);
     setOpen(true);
@@ -107,7 +102,13 @@ const Photo = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const handleClickOpenImage = (id) => {
+    setSelectedImageId(id);
+    setOpenImage(true);
+  };
+  const handleCloseImage = () => {
+    setOpenImage(false);
+  };
   const handleClickOpenShare = () => {
     setOpenShare(true);
   };
@@ -334,23 +335,17 @@ const Photo = () => {
             >
               +Share
             </Button>
-            {/* <Snackbar open={openSnack} autoHideDuration={4000} onClose={handleCloseSnack}>
-              <Alert
-                onClose={handleCloseSnack}
-                severity="success"
-                sx={{ width: "100%" }}
-              >
-                Link Copied 
-              </Alert>
-            </Snackbar> */}
           </Grid>
           <Grid item sm={7}>
-            <Img src={`/${getImage.imagePath}`} alt="" />
+            <Img src={`/${getImage.imagePath}`} alt=""onClick={() =>
+                handleClickOpenImage(getImage._id)
+               }/>
           </Grid>
         </Grid>
       </Box>
       <PhotoDialog setOpen={setOpen} open={open} imageId={selectedImageId} />
       <ShareDialog setOpen={setOpenShare} open={openShare} />
+      <PhotoExpandDialog setOpen={setOpenImage} open={openImage} imageId={selectedImageId} />
     </>
   );
 };

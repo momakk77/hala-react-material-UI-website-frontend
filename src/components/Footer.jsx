@@ -70,7 +70,7 @@ function Footer() {
                 marginBottom: "5rem",
               }}
             >
-              © 2020 — ALL RIGHTS RESERVED
+              © 2023 — ALL RIGHTS RESERVED
             </Typography>
           </Box>
         </Grid>
@@ -270,7 +270,7 @@ function Footer() {
                 justifyContent: "center",
               }}
             >
-              © 2020 — ALL RIGHTS RESERVED
+              © 2023 — ALL RIGHTS RESERVED
             </Typography>
           </Grid>
         </Container>
