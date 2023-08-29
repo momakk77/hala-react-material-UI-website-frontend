@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Img = styled("img")((props) => ({
     display: "block",
-  objectFit: "cover",
+  objectFit: "contain",
   width: "100%",
   height: "100vh",
 
@@ -89,10 +89,10 @@ const config = {
 
       <BootstrapDialog
         fullWidth
-        maxWidth="xl"
+        maxWidth="lg"
         sx={{
           width: "100%",
-          height: "100%",
+          height: "100vh",
         }}
         onClose={handleClose}
         open={open}
