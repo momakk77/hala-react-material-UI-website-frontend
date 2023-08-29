@@ -75,8 +75,8 @@ const PhotoExpandDialog = ({ open, setOpen, imageId }) => {
       <BootstrapDialog
         fullWidth
         sx={{
-          width: "80%", // Set the desired width as a percentage or in pixels
-          height: "80%", // Set the desired height as a percentage or in pixels
+          width: "1500px", // Set the desired width as a percentage or in pixels
+          height: "1000px", // Set the desired height as a percentage or in pixels
           maxWidth: "none",
         }}
         onClose={handleClose}
