@@ -88,7 +88,7 @@ const config = {
 
       <BootstrapDialog
         fullWidth
-        maxWidth="lg"
+        maxWidth="md"
   
         sx={{
           width: "100%",
