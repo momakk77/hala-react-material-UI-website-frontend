@@ -90,8 +90,8 @@ const config = {
       <BootstrapDialog
         fullWidth
         sx={{
-          width: "100vh",
-          height: "100vh",
+          width: "1500",
+          height: "100%",
         }}
         onClose={handleClose}
         open={open}
