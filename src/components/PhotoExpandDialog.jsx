@@ -91,7 +91,7 @@ const config = {
         fullWidth
         maxWidth="lg"
         sx={{
-          width: "100%",
+          width: "100vh",
           height: "100vh",
         }}
         onClose={handleClose}
