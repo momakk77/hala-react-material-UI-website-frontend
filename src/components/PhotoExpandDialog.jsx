@@ -11,7 +11,7 @@ const Img = styled("img")((props) => ({
   display: "block",
   objectFit: "cover",
   width: "100%",
-  height: "100%",
+  height: "50%",
   }));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -91,7 +91,7 @@ const config = {
         maxWidth="lg"
         sx={{
           width: "100%",
-          height: "100vh",
+          height: "100%",
         }}
         onClose={handleClose}
         open={open}
