@@ -10,7 +10,7 @@ import axios from "axios";
 const Img = styled("img")((props) => ({
     display: "block",
   objectFit: "contain",
-  width: "150%",
+  width: "100%",
   height: "100vh",
 
     
@@ -91,8 +91,8 @@ const config = {
         fullWidth
         maxWidth="lg"
         sx={{
-          width: "100vh",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
         }}
         onClose={handleClose}
         open={open}
