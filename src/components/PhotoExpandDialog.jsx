@@ -10,8 +10,8 @@ import axios from "axios";
 const Img = styled("img")((props) => ({
     display: "block",
   objectFit: "cover", // Use "cover" instead of "contain"
-  width: "1113px",
-  height: "828px",
+  width: "100%",
+  height: "100%",
     
   }));
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
