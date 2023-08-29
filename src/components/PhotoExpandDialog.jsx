@@ -9,7 +9,7 @@ import axios from "axios";
 
 const Img = styled("img")((props) => ({
     display: "block",
-  objectFit: "cover", // Use "cover" instead of "contain"
+  objectFit: "cover",
   width: "100%",
   height: "100%",
 
@@ -71,7 +71,6 @@ const config = {
       alert(err.message);
     }
   };
-  console.log(getImage.imagePath.replace('/photo' , ''))
 
   useEffect(() => {
     imageId && getAImage(imageId);
@@ -91,13 +90,13 @@ const config = {
       <BootstrapDialog
         fullWidth
         sx={{
-          width: "100%",
-          height: "100%",
+          width: "100vh",
+          height: "100vh",
         }}
         onClose={handleClose}
         open={open}
         BackdropProps={{
-            style: { backgroundColor: "rgba(0, 0, 0, 0.9)" }, // Adjust the opacity value (0.5) as needed
+            style: { backgroundColor: "rgba(0, 0, 0, 0.9)" }, 
           }}
       >
         
