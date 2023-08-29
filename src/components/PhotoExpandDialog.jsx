@@ -10,7 +10,7 @@ import axios from "axios";
 const Img = styled("img")((props) => ({
     display: "block",
   objectFit: "contain",
-  width: "100%",
+  width: "150%",
   height: "100vh",
 
     
