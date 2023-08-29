@@ -11,7 +11,7 @@ const Img = styled("img")((props) => ({
     display: "block",
   objectFit: "contain",
   width: "100%",
-  height: "100vh",
+  height: "100%",
 
     
   }));
