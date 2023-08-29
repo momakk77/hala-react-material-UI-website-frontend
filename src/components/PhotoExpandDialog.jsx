@@ -11,7 +11,7 @@ const Img = styled("img")((props) => ({
     display: "block",
   objectFit: "cover",
   width: "150%",
-  height: "150%",
+  height: "auto",
 
     
   }));
@@ -89,6 +89,7 @@ const config = {
 
       <BootstrapDialog
         fullWidth
+        maxWidth="xl"
         sx={{
           width: "100%",
           height: "100%",
