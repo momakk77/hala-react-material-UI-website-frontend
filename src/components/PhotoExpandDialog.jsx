@@ -9,9 +9,9 @@ import axios from "axios";
 
 const Img = styled("img")((props) => ({
   display: "block",
-  objectFit: "cover",
+  objectFit: "contain",
   width: "100%",
-  height: "50%",
+  height: "100px",
   }));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -89,6 +89,7 @@ const config = {
       <BootstrapDialog
         fullWidth
         maxWidth="lg"
+  
         sx={{
           width: "100%",
           height: "100%",
