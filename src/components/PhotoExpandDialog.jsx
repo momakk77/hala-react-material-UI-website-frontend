@@ -8,13 +8,12 @@ import axios from "axios";
 
 
 const Img = styled("img")((props) => ({
-    display: "block",
+  display: "block",
   objectFit: "contain",
   width: "100%",
   height: "100%",
-
-    
   }));
+
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -92,7 +91,7 @@ const config = {
         maxWidth="lg"
         sx={{
           width: "100%",
-          height: "100%",
+          height: "100vh",
         }}
         onClose={handleClose}
         open={open}
