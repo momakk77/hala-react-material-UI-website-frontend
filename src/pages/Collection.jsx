@@ -181,7 +181,7 @@ const Collection = () => {
       </AppBar>
       <Grid container spacing={4}>
         {loading &&
-          getAllImages?.map((getImages) => (
+          getAllImages?.map((getImages, index) => (
             <Grid
               key={getImages._id}
               item
@@ -197,7 +197,7 @@ const Collection = () => {
                 sx={{ flex: 2, display: "flex", alignItems: "center" }}
               >
                 {imageLoadingStates[index] ? (
-                  // Show loading indicator here
+                
                   <div>Loading...</div>
                 ) : (
                   <Link
