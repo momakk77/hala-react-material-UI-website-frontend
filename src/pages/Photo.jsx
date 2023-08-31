@@ -19,7 +19,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import PhotoDialog from "../components/PhotoDialog";
 import ShareDialog from "../components/ShareDialog";
 import axios from "axios";
-import PhotoExpandDialog from "../components/PhotoExpandDialog"
+import PhotoExpandDialog from "../components/PhotoExpandDialog";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Img = styled("img")((props) => ({
   display: "block",
@@ -74,16 +75,13 @@ const Photo = () => {
   const { id } = useParams();
   const getAImage = async (id) => {
     try {
-      const res = await axios.get(
-        `/api/image/${id}`,
-        config
-      );
+      const res = await axios.get(`/api/image/${id}`, config);
       console.log(res.data);
-      setGetImage({ 
-        ...res.data.data, 
-        ...res.data, 
+      setGetImage({
+        ...res.data.data,
+        ...res.data,
       });
-      setLoading(true);
+      setLoading(false);
     } catch (err) {
       alert(err.message);
     }
@@ -130,7 +128,7 @@ const Photo = () => {
   const navigate = useNavigate();
   const navigateImage = (id) => {
     id && navigate(`/photo/${id}`);
-  }
+  };
 
   return (
     <>
@@ -171,7 +169,7 @@ const Photo = () => {
         >
           <IconButton
             sx={{
-              color: "#ACACAC",        
+              color: "#ACACAC",
             }}
             onClick={() => navigate("/collection")}
           >
@@ -202,7 +200,6 @@ const Photo = () => {
               navigateImage(getImage.nextImageId);
             }}
           >
-            
             <ArrowForwardIosIcon />
           </IconButton>
         </Box>
@@ -317,9 +314,7 @@ const Photo = () => {
             <Button
               variant="outlined"
               disableElevation
-              onClick={
-                handleClickOpenShare
-               }
+              onClick={handleClickOpenShare}
               sx={{
                 backgroundColor: "transparent",
                 color: "var(--unnamed-color-9f8965)",
@@ -337,15 +332,34 @@ const Photo = () => {
             </Button>
           </Grid>
           <Grid item sm={7}>
-            <Img src={`/${getImage.imagePath}`} alt=""onClick={() => 
-                handleClickOpenImage(getImage._id)
-             }/>
+            {loading ? (
+              <Img
+                src={`/${getImage.imagePath}`}
+                alt=""
+                onClick={() => handleClickOpenImage(getImage._id)}
+              />
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "650px",
+                }}
+              >
+                <CircularProgress />
+              </Box>
+            )}
           </Grid>
         </Grid>
       </Box>
       <PhotoDialog setOpen={setOpen} open={open} imageId={selectedImageId} />
       <ShareDialog setOpen={setOpenShare} open={openShare} />
-      <PhotoExpandDialog setOpen={setOpenImage} open={openImage} imageId={selectedImageId} />
+      <PhotoExpandDialog
+        setOpen={setOpenImage}
+        open={openImage}
+        imageId={selectedImageId}
+      />
     </>
   );
 };
