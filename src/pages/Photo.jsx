@@ -81,7 +81,7 @@ const Photo = () => {
         ...res.data.data,
         ...res.data,
       });
-      setLoading(false);
+      setLoading(true);
     } catch (err) {
       alert(err.message);
     }
