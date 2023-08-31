@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 const images = [
-  "/images/1.jpeg",
-  "/images/2.jpeg",
-  "/images/3.jpeg",
-  "/images/4.jpeg",
-  "/images/5.jpeg",
-  "/images/6.jpeg",
+  "/images/11.jpeg",
+  "/images/22.jpeg",
+  "/images/33.jpeg",
+  "/images/44.jpeg",
+  "/images/55.jpeg",
+  "/images/66.jpeg",
 ];
 const slideDuration = 5000;
 
