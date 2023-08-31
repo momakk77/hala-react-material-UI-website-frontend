@@ -81,7 +81,7 @@ const Photo = () => {
         ...res.data.data,
         ...res.data,
       });
-      setLoading(false);
+      setLoading(true);
     } catch (err) {
       alert(err.message);
     }
@@ -89,7 +89,6 @@ const Photo = () => {
 
   useEffect(() => {
     id && getAImage(id);
-    setLoading(true);
   }, [id]);
   const [open, setOpen] = React.useState(false);
   const [openShare, setOpenShare] = React.useState(false);
