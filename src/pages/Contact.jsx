@@ -7,9 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 export default function Contact() {
   const [formValues, setFormValues] = useState({});
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
   const [errors, setErrors] = useState({
     name: false,
     email: false,
@@ -19,15 +23,16 @@ export default function Contact() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-  const checkFormValues = useMemo(()=>{
-    const isValid = formValues.name && isValidEmail(formValues.email) && formValues.message;
+  const checkFormValues = useMemo(() => {
+    const isValid =
+      formValues.name && isValidEmail(formValues.email) && formValues.message;
     setErrors({
       name: !formValues.name,
       email: !formValues.email,
       message: !formValues.message,
     });
     return isValid;
-  },[formValues]); 
+  }, [formValues]);
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
@@ -42,12 +47,10 @@ export default function Contact() {
       },
     };
     try {
-      var response = await axios.post(
-        "/api/email/send",
-        formData,
-        config
-      );
-      console.log("ssss");
+      var response = await axios.post("/api/email/send", formData, config);
+      console.log("Email sent successfully");
+      setSnackbarMessage("Email sent successfully");
+      setSnackbarOpen(true);
       setFormValues({
         name: "",
         email: "",
@@ -55,8 +58,15 @@ export default function Contact() {
       });
     } catch (err) {
       console.log(err);
+      setSnackbarMessage("Error sending email");
+      setSnackbarOpen(true);
     }
-    
+  };
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
   };
 
   return (
@@ -86,7 +96,7 @@ export default function Contact() {
                 opacity: 1,
               }}
             >
-              For all sales and commission inquiries, please contact: 
+              For all sales and commission inquiries, please contact:
             </Typography>
 
             <Typography
@@ -98,8 +108,8 @@ export default function Contact() {
                 opacity: 1,
               }}
             >
-              hala.art@gmail.com  <br />
-              Istanbul - Turkey 
+              hala.art@gmail.com <br />
+              Istanbul - Turkey
             </Typography>
           </Box>
         </Grid>
@@ -198,6 +208,20 @@ export default function Contact() {
           </Grid>
         </Grid>
       </Grid>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          onClose={handleSnackbarClose}
+          severity="success"
+        >
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
     </>
   );
 }
