@@ -347,7 +347,7 @@ const Photo = () => {
                   height: "650px",
                 }}
               >
-                <CircularProgress color="#FF0000" />
+                <CircularProgress/>
               </Box>
             )}
           </Grid>
