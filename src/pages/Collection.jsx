@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { useNavigate, Link } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 const Img = styled("img")({
   maxWidth: "100%",
@@ -16,8 +16,8 @@ const Img = styled("img")({
 const categories = ["All", "Broken", "Soul", "Ink On Paper"];
 
 const Collection = () => {
-
   const [getAllImages, setGetAllImages] = useState([]);
+  const [imageLoadingStates, setImageLoadingStates] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [getAllCategories, setGetAllCategories] = useState([]);
@@ -26,20 +26,23 @@ const Collection = () => {
   const [selectedLimit, setSelectedLimit] = useState(8);
 
   // const checkLoadMore = useMemo(()=>{
-  //   return 
-  // },[]); 
+  //   return
+  // },[]);
 
-  const getImages = async ()=> {
+  const getImages = async () => {
     try {
-      const res = await axios.get(`/api/image?category=${selectedCategory}&page=${selectedPage}&limit=${selectedLimit}`);
+      const res = await axios.get(
+        `/api/image?category=${selectedCategory}&page=${selectedPage}&limit=${selectedLimit}`
+      );
+      setImageLoadingStates(new Array(res.data.length).fill(true));
       console.log(res);
       setGetAllImages(res.data);
       setLoading(true);
     } catch (err) {
       alert(err.message);
     }
-  }
-  const getCategories = async ()=> {
+  };
+  const getCategories = async () => {
     try {
       const res = await axios.get(`/api/category`);
       console.log(res);
@@ -48,12 +51,12 @@ const Collection = () => {
     } catch (err) {
       alert(err.message);
     }
-  }
+  };
   useEffect(() => {
     getImages();
     getCategories();
   }, [selectedCategory, selectedLimit]);
- 
+
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -97,13 +100,11 @@ const Collection = () => {
                 display: { xs: "flex", md: "none" },
                 opacity: 1,
                 fontSize: "1.2rem",
-                
               }}
             >
               HALA ALABED
             </Typography>
             <Grid
-       
               sx={{
                 display: { xs: "flex", md: "none" },
               }}
@@ -112,33 +113,32 @@ const Collection = () => {
                 [
                   { _id: "All", category: "All" },
                   ...(getAllCategories ?? []),
-                  
                 ].map((getCategories, index) => (
-                <Button 
-                  key={getCategories._id}
-                  onClick={() => {
-                    handleCloseNavMenu();
-                    setSelectedCategoryIndex(index);
-                    setSelectedCategory(getCategories.category);
-                  }}
-                  sx={{
-                    color: selectedCategoryIndex == index ? "var( --unnamed-color-9f8965)" : "var(--unnamed-color-2c2a26)" ,
-                    letterSpacing: "0.54px",
-                    fontWeight: "normal",
-                    textTransform: "capitalize",
-                    opacity: 1,
-                    font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 1.2rem Red Hat Text",
-                    padding: "0",
-                    minWidth: "0",
-                    marginInlineEnd: "1rem",
-                    
-                  }}
-                >
-                  <Typography>
-                  {getCategories.category}
-                  </Typography>
-                </Button>
-              ))}
+                  <Button
+                    key={getCategories._id}
+                    onClick={() => {
+                      handleCloseNavMenu();
+                      setSelectedCategoryIndex(index);
+                      setSelectedCategory(getCategories.category);
+                    }}
+                    sx={{
+                      color:
+                        selectedCategoryIndex == index
+                          ? "var( --unnamed-color-9f8965)"
+                          : "var(--unnamed-color-2c2a26)",
+                      letterSpacing: "0.54px",
+                      fontWeight: "normal",
+                      textTransform: "capitalize",
+                      opacity: 1,
+                      font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 1.2rem Red Hat Text",
+                      padding: "0",
+                      minWidth: "0",
+                      marginInlineEnd: "1rem",
+                    }}
+                  >
+                    <Typography>{getCategories.category}</Typography>
+                  </Button>
+                ))}
             </Grid>
           </div>
           <Box
@@ -149,156 +149,181 @@ const Collection = () => {
             }}
           >
             {loading &&
-                [
-                  { _id: "All", category: "All" },
-                  ...(getAllCategories ?? []),
-                  
-                ].map((getCategories, index) => (
-              <Button
-                key={getCategories._id}
-                onClick={() => {
-                  handleCloseNavMenu();
-                  setSelectedCategoryIndex(index);
-                  setSelectedCategory(getCategories.category)
-                }}
-                sx={{
-                  color: selectedCategoryIndex == index ? "var( --unnamed-color-9f8965)" : "var(--unnamed-color-2c2a26)",
-                  display: "block",
-                  letterSpacing: "0.54px",
-                  fontWeight: "normal",
-                  textTransform: "capitalize",
-                  opacity: 1,
-                  font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 18px/30px Red Hat Text",
-                }}
-              >
-                {getCategories.category}
-              </Button>
-            ))}
+              [
+                { _id: "All", category: "All" },
+                ...(getAllCategories ?? []),
+              ].map((getCategories, index) => (
+                <Button
+                  key={getCategories._id}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    setSelectedCategoryIndex(index);
+                    setSelectedCategory(getCategories.category);
+                  }}
+                  sx={{
+                    color:
+                      selectedCategoryIndex == index
+                        ? "var( --unnamed-color-9f8965)"
+                        : "var(--unnamed-color-2c2a26)",
+                    display: "block",
+                    letterSpacing: "0.54px",
+                    fontWeight: "normal",
+                    textTransform: "capitalize",
+                    opacity: 1,
+                    font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 18px/30px Red Hat Text",
+                  }}
+                >
+                  {getCategories.category}
+                </Button>
+              ))}
           </Box>
         </Toolbar>
       </AppBar>
       <Grid container spacing={4}>
-        {loading && getAllImages?.map((getImages)  => (
-          <Grid
-            key={getImages._id}
-            item
-            container
-            lg={3}
-            md={4}
-            sm={6}
-            xs={6}
-            sx={{ flexFlow: "column" }}
+        {loading &&
+          getAllImages?.map((getImages) => (
+            <Grid
+              key={getImages._id}
+              item
+              container
+              lg={3}
+              md={4}
+              sm={6}
+              xs={6}
+              sx={{ flexFlow: "column" }}
+            >
+              <Grid
+                item
+                sx={{ flex: 2, display: "flex", alignItems: "center" }}
+              >
+                {imageLoadingStates[index] ? (
+                  // Show loading indicator here
+                  <div>Loading...</div>
+                ) : (
+                  <Link
+                    to={`/photo/${getImages._id}`}
+                    style={{ display: "block" }}
+                  >
+                    <Img
+                      alt="complex"
+                      src={getImages.imagePath}
+                      sx={{ width: "100%", objectFit: "contain" }}
+                      onLoad={() => {
+                        const updatedLoadingStates = [...imageLoadingStates];
+                        updatedLoadingStates[index] = false;
+                        setImageLoadingStates(updatedLoadingStates);
+                      }}
+                      onError={() => {
+                        const updatedLoadingStates = [...imageLoadingStates];
+                        updatedLoadingStates[index] = false;
+                        setImageLoadingStates(updatedLoadingStates);
+                      }}
+                    />
+                  </Link>
+                )}
+              </Grid>
+              <Grid item>
+                <Typography
+                  sx={{
+                    font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 14px/var(--unnamed-line-spacing-26) Red Hat Text",
+                    color: "var(--unnamed-color-7f7c76)",
+                    letterSpacing: 0.42,
+                    opacity: 1,
+                  }}
+                >
+                  {getImages.title}
+                </Typography>
+                <Typography
+                  sx={{
+                    font: "var(--unnamed-font-style-normal) normal 300 12px/16px Red Hat Text",
+                    color: "var(--unnamed-color-afaba1)",
+                    letterSpacing: 0.36,
+                    opacity: 1,
+                  }}
+                >
+                  {getImages.description}
+                  <br /> {getImages.size}
+                </Typography>
+              </Grid>
+            </Grid>
+          ))}
+      </Grid>
+      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
+      getAllImages.length < 8 ? null : (
+        <Grid
+          container
+          sx={{
+            justifyContent: "center",
+            marginTop: "3rem",
+            display: { xs: "flex", sm: "none" },
+          }}
+        >
+          <Button
+            // key={page}
+            onClick={() => {
+              handleCloseNavMenu();
+              setSelectedLimit(selectedLimit * 2);
+            }}
+            variant="contained"
+            disableElevation
+            sx={{
+              "&:hover": {
+                backgroundColor: "var(--unnamed-color-9f8965)",
+                opacity: 0.7,
+              },
+              background:
+                "var(--unnamed-color-9f8965) 0% 0% no-repeat padding-box",
+              color: "var(--unnamed-color-faf9e0)",
+              font: "normal normal normal 0.8rem Bodoni Moda",
+              letterSpacing: 3.2,
+              textTransform: "uppercase",
+              opacity: 1,
+              height: "2.5rem",
+              borderRadius: "2px",
+            }}
           >
-            <Grid item sx={{ flex: 2, display: "flex", alignItems: "center" }}>
-              <Link to={`/photo/${getImages._id}`} style={{ display: "block" }}>
-                <Img
-                  alt="complex"
-                  src={getImages.imagePath}
-                  sx={{ width: "100%", objectFit: "contain" }}
-                />
-              </Link>
-            </Grid>
-            <Grid item>
-              <Typography
-                sx={{
-                  font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 14px/var(--unnamed-line-spacing-26) Red Hat Text",
-                  color: "var(--unnamed-color-7f7c76)",
-                  letterSpacing: 0.42,
-                  opacity: 1,
-                }}
-              >
-                {getImages.title}
-              </Typography>
-              <Typography
-                sx={{
-                  font: "var(--unnamed-font-style-normal) normal 300 12px/16px Red Hat Text",
-                  color: "var(--unnamed-color-afaba1)",
-                  letterSpacing: 0.36,
-                  opacity: 1,
-                }}
-              >
-                {getImages.description}<br /> {getImages.size}
-              </Typography>
-            </Grid>
-          </Grid>
-        ))}
-      </Grid>
-      {getAllImages.length >= 8 && selectedLimit > getAllImages.length || getAllImages.length < 8 ? null : (
-      <Grid
-        container
-        sx={{
-          justifyContent: "center",
-          marginTop: "3rem",
-          display: { xs: "flex", sm: "none" },
-        }}
-      >
-        <Button
-        // key={page}
-        onClick={() => {
-          handleCloseNavMenu()
-          setSelectedLimit(selectedLimit*2);
-        }}
-          variant="contained"
-          disableElevation
-          sx={{
-            "&:hover": {
-              backgroundColor: "var(--unnamed-color-9f8965)",
-              opacity: 0.7,
-            },
-            background:
-              "var(--unnamed-color-9f8965) 0% 0% no-repeat padding-box",
-            color: "var(--unnamed-color-faf9e0)",
-            font: "normal normal normal 0.8rem Bodoni Moda",
-            letterSpacing: 3.2,
-            textTransform: "uppercase",
-            opacity: 1,
-            height: "2.5rem",
-            borderRadius: "2px",
-          }}
-        >
-          Load More
-        </Button>
-      </Grid>
+            Load More
+          </Button>
+        </Grid>
       )}
-       {getAllImages.length >= 8 && selectedLimit > getAllImages.length || getAllImages.length < 8 ? null : (
-      <Grid
-        container
-        sx={{
-          justifyContent: "center",
-          marginTop: "3rem",
-          display: { xs: "none", sm: "flex" },
-        }}
-      >
-        <Button
-        onClick={() => {
-          handleCloseNavMenu()
-          setSelectedLimit(selectedLimit+8);
-        }}
-          variant="contained"
-          disableElevation
+      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
+      getAllImages.length < 8 ? null : (
+        <Grid
+          container
           sx={{
-            "&:hover": {
-              backgroundColor: "var(--unnamed-color-9f8965)",
-              opacity: 0.7,
-            },
-            background:
-              "var(--unnamed-color-9f8965) 0% 0% no-repeat padding-box",
-            color: "var(--unnamed-color-faf9e0)",
-            font: "normal normal normal 0.8rem Bodoni Moda",
-            letterSpacing: 3.2,
-            textTransform: "uppercase",
-            opacity: 1,
-            height: "2.5rem",
-            borderRadius: "2px",
+            justifyContent: "center",
+            marginTop: "3rem",
+            display: { xs: "none", sm: "flex" },
           }}
         >
-          Load More
-        </Button>
-      </Grid>
-       )}
+          <Button
+            onClick={() => {
+              handleCloseNavMenu();
+              setSelectedLimit(selectedLimit + 8);
+            }}
+            variant="contained"
+            disableElevation
+            sx={{
+              "&:hover": {
+                backgroundColor: "var(--unnamed-color-9f8965)",
+                opacity: 0.7,
+              },
+              background:
+                "var(--unnamed-color-9f8965) 0% 0% no-repeat padding-box",
+              color: "var(--unnamed-color-faf9e0)",
+              font: "normal normal normal 0.8rem Bodoni Moda",
+              letterSpacing: 3.2,
+              textTransform: "uppercase",
+              opacity: 1,
+              height: "2.5rem",
+              borderRadius: "2px",
+            }}
+          >
+            Load More
+          </Button>
+        </Grid>
+      )}
     </>
   );
 };
 export default Collection;
-
-
