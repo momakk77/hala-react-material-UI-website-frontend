@@ -14,8 +14,11 @@ const images = [
 ];
 const slideDuration = 5000;
 
+const placeholderImage = "/images/place.jpeg"; 
+
 const Home = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleKeyboardNavigation = (event) => {
@@ -31,6 +34,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setIsLoading(false); 
     }, slideDuration);
 
     window.addEventListener("keydown", handleKeyboardNavigation);
@@ -42,7 +46,7 @@ const Home = () => {
   }, [currentImageIndex]);
 
   const backgroundImageStyle = {
-    backgroundImage: `url(${images[currentImageIndex]})`,
+    backgroundImage: `url(${isLoading ? placeholderImage : images[currentImageIndex]})`,
   };
   return (
     <>
