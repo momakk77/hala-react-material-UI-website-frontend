@@ -81,9 +81,6 @@ function Footer() {
               justifyContent: "flex-end",
             }}
           >
-            
-            
-            
             <IconButton
               href="https://www.behance.net/halaAlabed"
               target="_blank" 
@@ -216,6 +213,7 @@ function Footer() {
             >
               <IconButton
               href="https://www.behance.net/halaAlabed"
+              target="_blank" 
                 sx={{
                   width: "40px",
                   height: "40px",
@@ -232,6 +230,7 @@ function Footer() {
               </IconButton>
               <IconButton
               href="https://www.linkedin.com/in/hala-al-abed-bbb689107"
+              target="_blank" 
                 sx={{
                   "&:hover": {
                     backgroundColor: "#9F8965",
@@ -248,6 +247,7 @@ function Footer() {
               </IconButton>
               <IconButton
               href="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
+              target="_blank" 
                 sx={{
                   "&:hover": {
                     backgroundColor: "#9F8965",
