@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { Grid, Container } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBehance } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
@@ -81,8 +81,11 @@ function Footer() {
               justifyContent: "flex-end",
             }}
           >
+            <NavLink
+            href="https://www.behance.net/halaAlabed"
+            >
             <IconButton
-              to="https://www.behance.net/halaAlabed"
+              
               sx={{
                 width: "40px",
                 height: "40px",
@@ -97,6 +100,7 @@ function Footer() {
             >
               <FontAwesomeIcon icon={faBehance} />
             </IconButton>
+            </NavLink>
             <IconButton
               to="https://www.linkedin.com/in/hala-al-abed-bbb689107"
               sx={{
