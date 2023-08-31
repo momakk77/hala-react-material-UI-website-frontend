@@ -81,7 +81,7 @@ const Photo = () => {
         ...res.data.data,
         ...res.data,
       });
-      setLoading(true);
+      setLoading(false);
     } catch (err) {
       alert(err.message);
     }
@@ -89,6 +89,7 @@ const Photo = () => {
 
   useEffect(() => {
     id && getAImage(id);
+    setLoading(true);
   }, [id]);
   const [open, setOpen] = React.useState(false);
   const [openShare, setOpenShare] = React.useState(false);
@@ -347,7 +348,7 @@ const Photo = () => {
                   height: "650px",
                 }}
               >
-                <CircularProgress />
+                <CircularProgress color="var(--unnamed-color-faf9e0)" />
               </Box>
             )}
           </Grid>
