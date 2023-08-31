@@ -82,7 +82,7 @@ function Footer() {
             }}
           >
             <IconButton
-              href="https://www.behance.net/halaAlabed"
+              to="https://www.behance.net/halaAlabed"
               sx={{
                 width: "40px",
                 height: "40px",
@@ -98,7 +98,7 @@ function Footer() {
               <FontAwesomeIcon icon={faBehance} />
             </IconButton>
             <IconButton
-              href="https://www.linkedin.com/in/hala-al-abed-bbb689107"
+              to="https://www.linkedin.com/in/hala-al-abed-bbb689107"
               sx={{
                 "&:hover": {
                   backgroundColor: "var(--unnamed-color-9f8965)",
@@ -114,7 +114,7 @@ function Footer() {
               <FontAwesomeIcon icon={faLinkedinIn} />
             </IconButton>
             <IconButton
-              href="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
+              to="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
               sx={{
                 "&:hover": {
                   backgroundColor: "var(--unnamed-color-9f8965)",

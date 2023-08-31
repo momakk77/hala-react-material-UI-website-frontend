@@ -101,22 +101,6 @@ export default function Contact() {
               hala.art@gmail.com  <br />
               Istanbul - Turkey 
             </Typography>
-            <IconButton
-            href="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
-              sx={{
-                width: "40px",
-                height: "40px",
-                bgcolor: "var(--unnamed-color-9f8965)",
-                color: "white",
-                "&:hover": {
-                  backgroundColor: "var(--unnamed-color-9f8965)",
-                  opacity: 0.7,
-                },
-              }}
-              aria-label="instagram"
-            >
-              <InstagramIcon />
-            </IconButton>
           </Box>
         </Grid>
         <Grid container item sm={6} spacing={2}>
