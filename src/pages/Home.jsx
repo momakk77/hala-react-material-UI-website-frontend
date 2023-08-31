@@ -14,15 +14,6 @@ const images = [
 ];
 const slideDuration = 5000;
 
-const Img = ({ src, ...props }) => (
-  <Box 
-    component="img"
-    src={src} 
-    sx={{ width: "100%", height: "100%" }}
-    {...props} 
-  />
-);
-
 const Home = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -50,18 +41,27 @@ const Home = () => {
     };
   }, [currentImageIndex]);
 
-
+  const backgroundImageStyle = {
+    backgroundImage: `url(${images[currentImageIndex]})`,
+  };
   return (
     <>
-      <Box sx={{position: "relative", width: "100%", height: "100vh"}}>
-        <Img 
-          src={images[currentImageIndex]}
-          onKeyDown={handleKeyboardNavigation}
-          tabIndex="0" 
-        />
-
-
-      </Box>
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          ...backgroundImageStyle,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          display: { xs: "none", md: "flex" },
+          outline: "none",
+          transition: "background 2s"
+        }}
+        onKeyDown={handleKeyboardNavigation}
+        tabIndex="0"
+      >
         <div
           style={{
             position: "absolute",
@@ -120,14 +120,23 @@ const Home = () => {
             </Button>
           </Grid>
         </Grid>
-        <Box sx={{position: "relative", width: "100%", height: "100vh"}}>
-        <Img 
-          src={images[currentImageIndex]}
-          onKeyDown={handleKeyboardNavigation}
-          tabIndex="0" 
-        />
-
-       
+      </Box>
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          ...backgroundImageStyle,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          display: { xs: "block", md: "none" },
+          outline: "none",
+          transition: "background 2s"
+        }}
+        onKeyDown={handleKeyboardNavigation}
+        tabIndex="0"
+      >
         <div
           style={{
             position: "absolute",
