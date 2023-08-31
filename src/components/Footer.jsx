@@ -81,11 +81,12 @@ function Footer() {
               justifyContent: "flex-end",
             }}
           >
-            <NavLink
-            to="https://www.behance.net/halaAlabed"
-            >
+            
+            
+            
             <IconButton
-              
+              href="https://www.behance.net/halaAlabed"
+              target="_blank" 
               sx={{
                 width: "40px",
                 height: "40px",
@@ -100,9 +101,10 @@ function Footer() {
             >
               <FontAwesomeIcon icon={faBehance} />
             </IconButton>
-            </NavLink>
+          
             <IconButton
-              to="https://www.linkedin.com/in/hala-al-abed-bbb689107"
+              href="https://www.linkedin.com/in/hala-al-abed-bbb689107"
+              target="_blank" 
               sx={{
                 "&:hover": {
                   backgroundColor: "var(--unnamed-color-9f8965)",
@@ -118,7 +120,8 @@ function Footer() {
               <FontAwesomeIcon icon={faLinkedinIn} />
             </IconButton>
             <IconButton
-              to="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
+              href="https://instagram.com/hala.al.abed?igshid=OGQ5ZDc2ODk2ZA=="
+              target="_blank" 
               sx={{
                 "&:hover": {
                   backgroundColor: "var(--unnamed-color-9f8965)",
