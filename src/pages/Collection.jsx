@@ -20,6 +20,7 @@ const Collection = () => {
   const [getAllImages, setGetAllImages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+  const [getAllCategories, setGetAllCategories] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [selectedLimit, setSelectedLimit] = useState(8);
@@ -38,8 +39,19 @@ const Collection = () => {
       alert(err.message);
     }
   }
+  const getCategories = async ()=> {
+    try {
+      const res = await axios.get(`/api/category`);
+      console.log(res);
+      setGetAllCategories(res.data);
+      setLoading(true);
+    } catch (err) {
+      alert(err.message);
+    }
+  }
   useEffect(() => {
     getImages();
+    getCategories();
   }, [selectedCategory, selectedLimit]);
  
   const navigate = useNavigate();
@@ -96,13 +108,13 @@ const Collection = () => {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              {categories.map((category, index) => (
+              {loading && getAllCategories?.map((getCategories, index) => (
                 <Button 
-                  key={category}
+                  key={getCategories._id}
                   onClick={() => {
                     handleCloseNavMenu();
                     setSelectedCategoryIndex(index);
-                    setSelectedCategory(category);
+                    setSelectedCategory(getCategories.category);
                   }}
                   sx={{
                     color: selectedCategoryIndex == index ? "var( --unnamed-color-9f8965)" : "var(--unnamed-color-2c2a26)" ,
@@ -118,7 +130,7 @@ const Collection = () => {
                   }}
                 >
                   <Typography>
-                  {category}
+                  {getCategories.category}
                   </Typography>
                 </Button>
               ))}
@@ -131,13 +143,13 @@ const Collection = () => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {categories.map((category, index) => (
+            {loading && getAllCategories?.map((getCategories, index) => (
               <Button
-                key={category}
+                key={getCategories._id}
                 onClick={() => {
                   handleCloseNavMenu();
                   setSelectedCategoryIndex(index);
-                  setSelectedCategory(category)
+                  setSelectedCategory(getCategories.category)
                 }}
                 sx={{
                   color: selectedCategoryIndex == index ? "var( --unnamed-color-9f8965)" : "var(--unnamed-color-2c2a26)",
@@ -149,7 +161,7 @@ const Collection = () => {
                   font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 18px/30px Red Hat Text",
                 }}
               >
-                {category}
+                {getCategories.category}
               </Button>
             ))}
           </Box>
