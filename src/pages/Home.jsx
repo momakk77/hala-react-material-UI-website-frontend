@@ -34,7 +34,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-      setIsLoading(true); 
+      setIsLoading(false); 
     }, slideDuration);
 
     window.addEventListener("keydown", handleKeyboardNavigation);
