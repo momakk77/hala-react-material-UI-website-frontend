@@ -5,6 +5,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CircularProgress from "@mui/material/CircularProgress";
 
 
 const Img = styled("img")((props) => ({
@@ -103,7 +104,25 @@ const config = {
           }}
       >
         
-         <Img src={`/${getImage.imagePath}`} alt=""/>
+        {loading ? (
+              <Img
+                src={`/${getImage.imagePath}`}
+                alt=""
+              />
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "650px",
+                }}
+              >
+                <CircularProgress style={{ 
+                  color: "var(--unnamed-color-9f8965)",
+                 }}/>
+              </Box>
+            )}
          
 
       </BootstrapDialog>

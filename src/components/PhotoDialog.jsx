@@ -8,8 +8,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
-import axios from 'axios';
+import axios from "axios";
 import React, { useEffect, useState, useMemo } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -55,8 +56,6 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-
-
 const PhotoDialog = ({ open, setOpen, imageId }) => {
   const handleClickOpen = () => {
     setOpen(true);
@@ -68,59 +67,64 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({});
 
-  const checkFormValues = useMemo(()=>{
-    return formValues.name && formValues.email && formValues.phone && formValues.message;
-  },[formValues]); 
+  const checkFormValues = useMemo(() => {
+    return (
+      formValues.name &&
+      formValues.email &&
+      formValues.phone &&
+      formValues.message
+    );
+  }, [formValues]);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', formValues.name);
-    formData.append('email', formValues.email);
-    formData.append('phone', formValues.phone);
-    formData.append('message', formValues.message);
-    formData.append('imageId', imageId);
+    formData.append("name", formValues.name);
+    formData.append("email", formValues.email);
+    formData.append("phone", formValues.phone);
+    formData.append("message", formValues.message);
+    formData.append("imageId", imageId);
     const config = {
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-    }
-    axios.post('/api/request/enquire', formData, config).then((response) => {
-      setOpen(false)
-      console.log("ssss")
-      setFormValues({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
+    };
+    axios
+      .post("/api/request/enquire", formData, config)
+      .then((response) => {
+        setOpen(false);
+        console.log("ssss");
+        setFormValues({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        // console.log("error sending");
       });
-    }).catch((err) => {
-      console.log(err);
-      // console.log("error sending");
-    });
-  }
-
-
-
+  };
 
   const config = {
-      headers: {
-          'content-type': 'multipart/form-data',
-      },
-  }
+    headers: {
+      "content-type": "multipart/form-data",
+    },
+  };
   const getAImage = async (imageId) => {
-      try {
-          const res = await axios.get(`/api/image/${imageId}`, config);
-          console.log(res.data);
-          setGetImage(res.data.data);
-          setLoading(true);
-      } catch (err) {
-          alert(err.message);
-      }
-  }
+    try {
+      const res = await axios.get(`/api/image/${imageId}`, config);
+      console.log(res.data);
+      setGetImage(res.data.data);
+      setLoading(true);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
   useEffect(() => {
-      imageId && getAImage(imageId);
+    imageId && getAImage(imageId);
   }, [imageId]);
 
   return (
@@ -165,11 +169,28 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
           >
             <Grid container spacing={2}>
               <Grid item sm={3}>
-                <Img
-                  sx={{ height: "100%" }}
-                  alt="complex"
-                  src={`/${getImage.imagePath}`}
-                />
+                {loading ? (
+                  <Img
+                    sx={{ height: "100%" }}
+                    src={`/${getImage.imagePath}`}
+                    alt=""
+                  />
+                ) : (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "650px",
+                    }}
+                  >
+                    <CircularProgress
+                      style={{
+                        color: "var(--unnamed-color-9f8965)",
+                      }}
+                    />
+                  </Box>
+                )}
               </Grid>
               <Grid item xs={9}>
                 <Typography
@@ -181,8 +202,8 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
                   }}
                 >
                   {getImage.title},
-                  <br /> {getImage.description} <br /> {getImage.size} <br /> 22 1/8x
-                  29 7/8 in <br /> Framed
+                  <br /> {getImage.description} <br /> {getImage.size} <br /> 22
+                  1/8x 29 7/8 in <br /> Framed
                 </Typography>
               </Grid>
             </Grid>
@@ -211,9 +232,9 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
                   setFormValues((v) => {
                     return {
                       ...v,
-                      name: e.target.value
-                    }
-                  })
+                      name: e.target.value,
+                    };
+                  });
                 }}
                 InputLabelProps={{
                   sx: {
@@ -250,9 +271,9 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
                   setFormValues((v) => {
                     return {
                       ...v,
-                      email: e.target.value
-                    }
-                  })
+                      email: e.target.value,
+                    };
+                  });
                 }}
                 InputLabelProps={{
                   sx: {
@@ -287,9 +308,9 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
                   setFormValues((v) => {
                     return {
                       ...v,
-                      phone: e.target.value
-                    }
-                  })
+                      phone: e.target.value,
+                    };
+                  });
                 }}
                 InputLabelProps={{
                   sx: {
@@ -327,9 +348,9 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
                   setFormValues((v) => {
                     return {
                       ...v,
-                      message: e.target.value
-                    }
-                  })
+                      message: e.target.value,
+                    };
+                  });
                 }}
                 InputLabelProps={{
                   sx: {
