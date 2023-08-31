@@ -14,7 +14,7 @@ const images = [
 ];
 const slideDuration = 5000;
 
-const placeholderImage = "/images/place.jpeg"; 
+//const placeholderImage = "/images/place.jpeg"; 
 
 const Home = () => {
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ const Home = () => {
   }, [currentImageIndex]);
 
   const backgroundImageStyle = {
-    backgroundImage: `url(${isLoading ? placeholderImage : images[currentImageIndex]})`,
+    backgroundImage: `url(${images[currentImageIndex]})`,
   };
   return (
     <>
