@@ -42,7 +42,7 @@ const Home = () => {
   }, [currentImageIndex]);
 
   const backgroundImageStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)) url(${images[currentImageIndex]})`,
+    backgroundImage: `url(${images[currentImageIndex]})`,
   };
   return (
     <>
@@ -62,7 +62,7 @@ const Home = () => {
         onKeyDown={handleKeyboardNavigation}
         tabIndex="0"
       >
-        {/* <div
+        <div
           style={{
             position: "absolute",
             top: 0,
@@ -71,7 +71,7 @@ const Home = () => {
             height: "100%",
             backgroundColor: "rgba(0, 0, 0, 0.3)", 
           }}
-        /> */}
+        />
         <Grid
           container
           sx={{
@@ -132,6 +132,7 @@ const Home = () => {
           backgroundSize: "cover",
           display: { xs: "block", md: "none" },
           outline: "none",
+          transition: "background 2s"
         }}
         onKeyDown={handleKeyboardNavigation}
         tabIndex="0"
