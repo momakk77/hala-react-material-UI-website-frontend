@@ -118,7 +118,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
       const res = await axios.get(`/api/image/${imageId}`, config);
       console.log(res.data);
       setGetImage(res.data.data);
-      setLoading(false);
+      setLoading(true);
     } catch (err) {
       alert(err.message);
     }
@@ -170,6 +170,12 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
             <Grid container spacing={2}>
               <Grid item sm={3}>
                 {loading ? (
+                  <Img
+                  sx={{ height: "100%" }}
+                  src={`/${getImage.imagePath}`}
+                  alt=""
+                />
+                ) : (
                   <Box
                     sx={{
                       display: "flex",
@@ -180,12 +186,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
                   >
                     <CircularProgress />
                   </Box>
-                ) : (
-                  <Img
-                    sx={{ height: "100%" }}
-                    src={`/${getImage.imagePath}`}
-                    alt=""
-                  />
+                  
                 )}
               </Grid>
               <Grid item xs={9}>
