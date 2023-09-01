@@ -2,6 +2,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { CircularProgress } from '@mui/material';
 
 const images = [
   "/images/1.jpeg",
@@ -216,7 +217,16 @@ const Home = () => {
           </Box>
         </>
       ) : (
-        <div> Loading .. </div>
+        <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress style={{ color: "var(--unnamed-color-9f8965)" }} />
+      </div>
       )}
     </>
   );

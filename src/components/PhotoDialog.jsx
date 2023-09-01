@@ -184,7 +184,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
                       height: "100%",
                     }}
                   >
-                    <CircularProgress style={{ color: "var(--unnamed-color-9f8965" }}/>
+                    <CircularProgress style={{ color: "var(--unnamed-color-9f8965)" }}/>
                   </Box>
                   
                 )}
