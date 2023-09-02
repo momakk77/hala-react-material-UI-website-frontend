@@ -28,7 +28,7 @@ const Img = styled("img")((props) => ({
 }));
 
 export default function About() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   return (
    
     <Grid container sx={{ paddingTop: "3.5rem" }} spacing={2}>
