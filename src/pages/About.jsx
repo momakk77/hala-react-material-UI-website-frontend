@@ -34,20 +34,19 @@ export default function About() {
     <Grid container sx={{ paddingTop: "3.5rem" }} spacing={2}>
       <Grid item sm={12} md={6} xl={5} xs={12}>
       {isLoading ? (
+        <Img
+        src="images/about.jpg"
+        alt=""
+      />
+          
+        ) : (
           <CircularProgress style={{ 
             color: "var(--unnamed-color-9f8965)",
             position: "absolute",
-            top: "50%",
-            left: "50%",
+            top: "70%",
+            left: "30%",
             transform: "translate(-50%, -50%)",
            }} />
-        ) : (
-          <Img
-            src="images/about.jpg"
-            alt=""
-            onLoad={() => setIsLoading(false)}
-            style={{ visibility: isLoading ? "hidden" : "visible" }}
-          />
         )}
       </Grid>
       <Grid item sm={12} md={6} xs={12}>
