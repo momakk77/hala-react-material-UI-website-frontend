@@ -8,6 +8,23 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { CircularProgress } from '@mui/material';
+
+
+
+const ImageContainer = styled("div")({
+  position: "relative",
+  width: "100%",
+  height: "100%",
+});
+
+const CenteredCircularProgress = styled(CircularProgress)({
+  position: "absolute",
+  color: "var(--unnamed-color-9f8965)",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+});
 
 const Img = styled("img")({
   maxWidth: "100%",
@@ -193,16 +210,17 @@ const Collection = () => {
                   to={`/photo/${getImages._id}`}
                   style={{ display: "block" }}
                 >
-                  {loading ? (
-                     <Img
-                     alt="complex"
-                     src={getImages.imagePath}
-                     sx={{ width: "100%", objectFit: "contain" }}
-                   />
-                    
-                  ) : (
-                    <CircularProgress style={{ color: "var(--unnamed-color-9f8965" }}/>
-                  )}
+                  <ImageContainer>
+                    {loading ? (
+                      <CenteredCircularProgress/>
+                    ) : 
+                    <Img
+                      alt="complex"
+                      src={getImages.imagePath}
+                      sx={{ width: "100%", objectFit: "contain", visibility: loading ? "hidden" : "visible" }}
+                    />
+}
+                  </ImageContainer>
                 </Link>
               </Grid>
               <Grid item>
