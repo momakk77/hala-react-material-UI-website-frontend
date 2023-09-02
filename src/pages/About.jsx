@@ -1,7 +1,8 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { Container, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { CircularProgress } from '@mui/material';
 
 const Img = styled("img")((props) => ({
   display: "block",
@@ -27,11 +28,22 @@ const Img = styled("img")((props) => ({
 }));
 
 export default function About() {
+  const [isLoading, setIsLoading] = useState(true);
   return (
    
     <Grid container sx={{ paddingTop: "3.5rem" }} spacing={2}>
       <Grid item sm={12} md={6} xl={5} xs={12}>
-        <Img src="images/about.jpg" alt="" />
+      {isLoading ? (
+          <CircularProgress style={{ 
+            color: "var(--unnamed-color-9f8965)"
+           }} />
+        ) : (
+          <Img
+            src="images/about.jpg"
+            alt=""
+            onLoad={() => setIsLoading(false)}
+          />
+        )}
       </Grid>
       <Grid item sm={12} md={6} xs={12}>
         <Typography
