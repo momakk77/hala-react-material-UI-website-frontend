@@ -15,7 +15,7 @@ const CenteredCircularProgress = styled(CircularProgress)({
   color: "var(--unnamed-color-9f8965)",
   position: "absolute",
   top: "40%",
-  left: "35%",
+  left: "40%",
   transform: "translate(-50%, -50%)",
 });
 
