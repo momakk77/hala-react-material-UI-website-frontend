@@ -90,7 +90,7 @@ const config = {
 
       <BootstrapDialog
         fullWidth
-        maxWidth="lg"
+        maxWidth={{sm: "lg"}}
   
         sx={{
           "& .MuiPaper-root": {

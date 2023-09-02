@@ -218,7 +218,7 @@ const Photo = () => {
             alignSelf={"center"}
             sx={{
               alignSelf: { xs: "flex-start", sm: "center" },
-              marginTop: { xs: "20px", sm: "0px" },
+              marginTop: { sm: "0px" },
             }}
           >
             <Typography
