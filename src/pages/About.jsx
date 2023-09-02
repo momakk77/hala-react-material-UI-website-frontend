@@ -4,6 +4,21 @@ import { Container, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CircularProgress } from '@mui/material';
 
+
+const ImgContainer = styled("div")({
+  position: "relative",
+  width: "100%",
+  height: "100%",
+});
+
+const CenteredCircularProgress = styled(CircularProgress)({
+  color: "var(--unnamed-color-9f8965)",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+});
+
 const Img = styled("img")((props) => ({
   display: "block",
   width: "100%",
@@ -28,26 +43,27 @@ const Img = styled("img")((props) => ({
 }));
 
 export default function About() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
   return (
    
     <Grid container sx={{ paddingTop: "3.5rem" }} spacing={2}>
       <Grid item sm={12} md={6} xl={5} xs={12}>
-      {isLoading ? (
-        <Img
-        src="images/about.jpg"
-        alt=""
-      />
-          
-        ) : (
-          <CircularProgress style={{ 
-            color: "var(--unnamed-color-9f8965)",
-            position: "absolute",
-            top: "70%",
-            left: "30%",
-            transform: "translate(-50%, -50%)",
-           }} />
-        )}
+      <ImgContainer>
+          {isLoading && <CenteredCircularProgress />}
+          <Img
+            src="images/about.jpg"
+            alt=""
+            style={{
+              visibility: isLoading ? "hidden" : "visible",
+              opacity: isLoading ? 0 : 1,
+              transition: "opacity 0.5s ease-in-out",
+            }}
+            onLoad={handleImageLoad}
+          />
+        </ImgContainer>
       </Grid>
       <Grid item sm={12} md={6} xs={12}>
         <Typography
