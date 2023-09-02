@@ -14,7 +14,7 @@ const ImgContainer = styled("div")({
 const CenteredCircularProgress = styled(CircularProgress)({
   color: "var(--unnamed-color-9f8965)",
   position: "absolute",
-  top: "70%",
+  top: "60%",
   left: "20%",
   transform: "translate(-50%, -50%)",
 });
