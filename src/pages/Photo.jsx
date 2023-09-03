@@ -29,9 +29,6 @@ const Img = styled("img")((props) => ({
   height: "650px",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  [props.theme.breakpoints.up("xs")]: {
-    height: "350px", // Set height to 0px for xs screens
-  },
   [props.theme.breakpoints.up("xl")]: {
     height: "100vh",
   },
