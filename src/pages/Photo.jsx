@@ -30,7 +30,7 @@ const Img = styled("img")((props) => ({
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   [props.theme.breakpoints.up("xs")]: {
-    height: "0px", // Set height to 0px for xs screens
+    height: "350px", // Set height to 0px for xs screens
   },
   [props.theme.breakpoints.up("sm")]: {
     height: "450px", // Adjust the height for small screens
@@ -39,7 +39,7 @@ const Img = styled("img")((props) => ({
     height: "550px", // Adjust the height for medium screens
   },
   [props.theme.breakpoints.up("lg")]: {
-    height: "750px", // Adjust the height for large screens
+    height: "900px", // Adjust the height for large screens
   },
   [props.theme.breakpoints.up("xl")]: {
     height: "100vh",
