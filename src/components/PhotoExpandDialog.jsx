@@ -114,7 +114,7 @@ const config = {
             ) : (
               <Box
                 sx={{
-                  display: {sm: "flex", xs: "none"},
+                  display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   height: "650px",
