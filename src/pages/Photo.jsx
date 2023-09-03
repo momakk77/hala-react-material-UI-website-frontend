@@ -26,7 +26,7 @@ const Img = styled("img")((props) => ({
   display: "block",
   objectFit: "contain",
   width: "100%",
-  height: {sm: "650px"},
+  //height: "650px",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   [props.theme.breakpoints.up("xl")]: {
@@ -216,8 +216,8 @@ const Photo = () => {
                 letterSpacing: 0.48,
                 textTransform: "uppercase",
                 opacity: 1,
-                paddingBottom: "20px",
-                paddingTop: "20px",
+                paddingBottom: "40px",
+                paddingTop: "40px",
               }}
             >
               Hala Alabed
