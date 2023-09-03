@@ -26,7 +26,7 @@ const Img = styled("img")((props) => ({
   display: "block",
   objectFit: "contain",
   width: "100%",
-  //height: "650px",
+  height: {sm: "650px"},
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   [props.theme.breakpoints.up("xl")]: {
