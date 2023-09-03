@@ -97,7 +97,7 @@ const config = {
             background: "transparent",
             boxShadow: "none"
           },
-          display: {xs: "none"}
+          display: {xs: "none", sm: "flex"}
         }}
         onClose={handleClose}
         open={open}
