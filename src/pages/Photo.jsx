@@ -26,7 +26,7 @@ const Img = styled("img")((props) => ({
   display: "block",
   objectFit: "contain",
   width: "100%",
-  //height: "650px",
+  height: "650px",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   [props.theme.breakpoints.up("xl")]: {
@@ -206,7 +206,7 @@ const Photo = () => {
             alignSelf={"center"}
             sx={{
               alignSelf: { xs: "flex-start", sm: "center" },
-              marginTop: { sm: "0px" },
+              marginTop: { sm: "0px",  },
             }}
           >
             <Typography
@@ -217,7 +217,7 @@ const Photo = () => {
                 textTransform: "uppercase",
                 opacity: 1,
                 paddingBottom: "40px",
-                paddingTop: "40px",
+                padding: "40px",
               }}
             >
               Hala Alabed
