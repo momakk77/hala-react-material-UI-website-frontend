@@ -71,7 +71,7 @@ const Collection = () => {
         disableGutters
       >
         <Toolbar disableGutters>
-          <Typography
+          {/* <Typography
             sx={{
               font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20) Red Hat Text",
               color: "var(--unnamed-color-2c2a26)",
@@ -83,9 +83,9 @@ const Collection = () => {
             }}
           >
             HALA ALABED
-          </Typography>
+          </Typography> */}
           <div>
-            <Typography
+            {/* <Typography
               sx={{
                 font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20) Red Hat Text",
                 color: "var(--unnamed-color-2c2a26)",
@@ -97,7 +97,7 @@ const Collection = () => {
               }}
             >
               HALA ALABED
-            </Typography>
+            </Typography> */}
             <Grid
               sx={{
                 display: { xs: "flex", md: "none" },

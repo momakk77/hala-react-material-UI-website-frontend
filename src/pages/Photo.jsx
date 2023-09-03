@@ -113,18 +113,6 @@ const Photo = () => {
   const handleCloseShare = () => {
     setOpenShare(false);
   };
-  // const handleClickSnack = () => {
-  //   setOpenSnack(true);
-  // };
-
-  // const handleCloseSnack = (event, reason) => {
-  //   if (reason === "clickaway") {
-  //     return;
-  //   }
-
-  //   setOpenSnack(false);
-  // };
-
   const navigate = useNavigate();
   const navigateImage = (id) => {
     id && navigate(`/photo/${id}`);
@@ -228,7 +216,7 @@ const Photo = () => {
                 letterSpacing: 0.48,
                 textTransform: "uppercase",
                 opacity: 1,
-                paddingBottom: "40px",
+                paddingBottom: "20px",
               }}
             >
               Hala Alabed
