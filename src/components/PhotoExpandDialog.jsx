@@ -97,7 +97,7 @@ const config = {
             background: "transparent",
             boxShadow: "none"
           },
-          display: {xs: "none", sm: "flex"}
+        
         }}
         onClose={handleClose}
         open={open}
@@ -114,7 +114,7 @@ const config = {
             ) : (
               <Box
                 sx={{
-                  display: "flex",
+                  display: {sm: "flex", xs: "none"},
                   justifyContent: "center",
                   alignItems: "center",
                   height: "650px",
