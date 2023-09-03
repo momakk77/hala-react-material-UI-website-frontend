@@ -216,8 +216,8 @@ const Photo = () => {
                 letterSpacing: 0.48,
                 textTransform: "uppercase",
                 opacity: 1,
-                paddingBottom: "40px",
-                padding: "40px",
+                paddingBottom: "30px",
+                paddingTop: "30px",
               }}
             >
               Hala Alabed
