@@ -26,14 +26,11 @@ const Img = styled("img")((props) => ({
   display: "block",
   objectFit: "contain",
   width: "100%",
-  height: "650px", 
+  height: "650px",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   [props.theme.breakpoints.up("xl")]: {
     height: "100vh",
-  },
-  [props.theme.breakpoints.up("xs")]: {
-    height: "0px",
   },
 }));
 
