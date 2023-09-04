@@ -1,11 +1,8 @@
 import { styled } from "@mui/material/styles";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Dialog, DialogTitle, Typography } from "@mui/material";
 import PropTypes from "prop-types";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import CircularProgress from "@mui/material/CircularProgress";
 
 const Img = styled("img")((props) => ({
   display: "block",
@@ -66,51 +63,48 @@ const PhotoExpandDialog = ({ open, setOpen, imageId }) => {
   useEffect(() => {
     imageId && getAImage(imageId);
   }, [imageId]);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+
   const handleClose = () => {
     setOpen(false);
   };
 
+  // Check if the screen width is greater than 600px (not XS) before rendering the dialog
   if (window.innerWidth > 600) {
     return (
-      <>
-        <BootstrapDialog
-          fullWidth
-          maxWidth={{ sm: "lg" }}
-          sx={{
-            "& .MuiPaper-root": {
-              background: "transparent",
-              boxShadow: "none",
-            },
-          }}
-          onClose={handleClose}
-          open={open}
-          BackdropProps={{
-            style: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
-          }}
-        >
-          {loading ? (
-            <Img src={`/${getImage.imagePath}`} alt="" />
-          ) : (
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "650px",
+      <BootstrapDialog
+        fullWidth
+        maxWidth={{ sm: "lg" }}
+        sx={{
+          "& .MuiPaper-root": {
+            background: "transparent",
+            boxShadow: "none",
+          },
+        }}
+        onClose={handleClose}
+        open={open}
+        BackdropProps={{
+          style: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
+        }}
+      >
+        {loading ? (
+          <Img src={`/${getImage.imagePath}`} alt="" />
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "650px",
+            }}
+          >
+            <CircularProgress
+              style={{
+                color: "var(--unnamed-color-9f8965)",
               }}
-            >
-              <CircularProgress
-                style={{
-                  color: "var(--unnamed-color-9f8965)",
-                }}
-              />
-            </Box>
-          )}
-        </BootstrapDialog>
-      </>
+            />
+          </Box>
+        )}
+      </BootstrapDialog>
     );
   } else {
     // Return null when on XS screens
