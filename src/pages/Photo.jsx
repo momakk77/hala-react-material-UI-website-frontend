@@ -36,10 +36,10 @@ const Img = styled("img")((props) => ({
     height: "450px", // Adjust the height for small screens
   },
   [props.theme.breakpoints.up("md")]: {
-    height: "650px", // Adjust the height for medium screens
+    height: "600px", // Adjust the height for medium screens
   },
   [props.theme.breakpoints.up("lg")]: {
-    height: "750px", // Adjust the height for large screens
+    height: "700px", // Adjust the height for large screens
   },
   [props.theme.breakpoints.up("xl")]: {
     height: "100vh",
