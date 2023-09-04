@@ -59,8 +59,8 @@ const Header = () => {
               style={{
                 marginRight: "2px",
                 display: { xs: "none", md: "flex" },
-                width: "30px",
-                height: "30px", // Adjust the height as needed
+                width: "100px",
+                height: "100px", // Adjust the height as needed
               }}
             />
           </Link>
