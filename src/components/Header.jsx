@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 
+
+import halaAlAbadImage from "/images/hala-logo2.png"; 
+
 const pages = [
   { name: "Home", path: "/" },
   { name: "Collection", path: "/collection" },
@@ -50,36 +53,28 @@ const Header = () => {
       >
         <Toolbar disableGutters>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <Typography
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontWeight: 600,
-              color: "black",
-              textDecoration: "none",
-              flexGrow: 1,
-              opacity: 1,
-              fontSize: "1.7rem",
-            }}
-          >
-            HALA <br />
-            ALABED
-          </Typography>
+        <img
+              src={halaAlAbadImage}
+              alt="Hala AlAbad"
+              style={{
+                marginRight: "2px",
+                display: { xs: "none", md: "flex" },
+                width: "auto",
+                height: "1.7rem", // Adjust the height as needed
+              }}
+            />
           </Link>
           <Link to="/" style={{ textDecoration: "none" }}>
-          <Typography
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              fontWeight: 600,
-              color: "black",
-              textDecoration: "none",
-              opacity: 1,
-              fontSize: "1.2rem",
-            }}
-          >
-            HALA <br /> ALABED
-          </Typography>
+          <img
+              src={halaAlAbadImage}
+              alt="Hala AlAbad"
+              style={{
+                marginRight: "2px",
+                display: { xs: "flex", md: "none" },
+                width: "auto",
+                height: "1.2rem", // Adjust the height as needed
+              }}
+            />
           </Link>
           <Box
             sx={{
