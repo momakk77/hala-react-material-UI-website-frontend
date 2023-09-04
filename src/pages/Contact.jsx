@@ -31,7 +31,7 @@ export default function Contact() {
   const onFormSubmit = async (e) => {
     e.preventDefault();
     if (!checkFormValues) {
-      setSnackbarMessage("Please fill in all fields correctly");
+      setSnackbarMessage("Please fill in all fields correctly and make the email valid");
       setSnackbarOpen(true);
       return;
     }
@@ -47,7 +47,6 @@ export default function Contact() {
     };
     try {
       var response = await axios.post("/api/email/send", formData, config);
-      console.log("Email sent successfully");
       setSnackbarMessage("Email sent successfully");
       setSnackbarOpen(true);
       setFormValues({
@@ -201,33 +200,19 @@ export default function Contact() {
         </Grid>
       </Grid>
       <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-      >
-        <MuiAlert
-          elevation={6}
-          variant="filled"
-          onClose={handleSnackbarClose}
-          severity="success"
-        >
-          {snackbarMessage}
-        </MuiAlert>
-      </Snackbar>
-      <Snackbar
-      open={snackbarOpen}
-      autoHideDuration={6000}
-      onClose={handleSnackbarClose}
-    >
-      <MuiAlert
-        elevation={6}
-        variant="filled"
-        onClose={handleSnackbarClose}
-        severity="error"
-      >
-        {snackbarMessage}
-      </MuiAlert>
-    </Snackbar>
+  open={snackbarOpen}
+  autoHideDuration={6000}
+  onClose={handleSnackbarClose}
+>
+  <MuiAlert
+    elevation={6}
+    variant="filled"
+    onClose={handleSnackbarClose}
+    severity={snackbarMessage.includes("successfully") ? "success" : "error"}
+  >
+    {snackbarMessage}
+  </MuiAlert>
+</Snackbar>
     </>
   );
 }
