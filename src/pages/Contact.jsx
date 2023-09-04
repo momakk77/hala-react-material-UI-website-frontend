@@ -14,24 +14,12 @@ export default function Contact() {
   const [formValues, setFormValues] = useState({});
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [errors, setErrors] = useState({
-    name: false,
-    email: false,
-    message: false,
-  });
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+
+
   const checkFormValues = useMemo(() => {
-    const isValid =
+  
       formValues.name && isValidEmail(formValues.email) && formValues.message;
-    setErrors({
-      name: !formValues.name,
-      email: !formValues.email,
-      message: !formValues.message,
-    });
-    return isValid;
+   
   }, [formValues]);
 
   const onFormSubmit = async (e) => {
@@ -119,8 +107,6 @@ export default function Contact() {
               label="Name"
               variant="outlined"
               fullWidth
-              error={errors.name}
-              helperText={errors.name && "Name is required"}
               value={formValues.name}
               onChange={(e) => {
                 setFormValues((v) => {
@@ -144,8 +130,6 @@ export default function Contact() {
               label="Email Address"
               variant="outlined"
               fullWidth
-              helperText={errors.email && "Please enter a valid email"}
-              error={errors.email}
               value={formValues.email}
               onChange={(e) => {
                 setFormValues((v) => {
@@ -172,8 +156,6 @@ export default function Contact() {
               maxRows={5}
               placeholder="Write your message here"
               fullWidth
-              helperText={errors.message && "Message is required"}
-              error={errors.message}
               value={formValues.message}
               onChange={(e) => {
                 setFormValues((v) => {
