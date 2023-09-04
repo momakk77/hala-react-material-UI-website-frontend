@@ -1,6 +1,6 @@
 
 import { styled } from "@mui/material/styles";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, withWidth } from "@mui/material";
 import PropTypes from "prop-types";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -84,10 +84,11 @@ const config = {
   };
 
 
+  const shouldShowDialog = width !== "xs";
 
   return (
     <>
-
+    {shouldShowDialog && (
       <BootstrapDialog
         fullWidth
         maxWidth={{sm: "lg"}}
@@ -127,7 +128,8 @@ const config = {
          
 
       </BootstrapDialog>
+      )}
     </>
   );
 };
-export default PhotoExpandDialog;
+export default withWidth()(PhotoExpandDialog);
