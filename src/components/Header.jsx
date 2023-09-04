@@ -56,11 +56,11 @@ const Header = () => {
         <img
               src={halaAlAbadImage}
               alt="Hala AlAbad"
-              style={{
+              sx={{
                 marginRight: "2px",
                 display: { xs: "none", md: "flex" },
                 width: "auto",
-                height: "1.7rem", // Adjust the height as needed
+                height: "5rem", // Adjust the height as needed
               }}
             />
           </Link>
@@ -68,11 +68,11 @@ const Header = () => {
           <img
               src={halaAlAbadImage}
               alt="Hala AlAbad"
-              style={{
+              sx={{
                 marginRight: "2px",
                 display: { xs: "flex", md: "none" },
                 width: "auto",
-                height: "1.2rem", // Adjust the height as needed
+                height: "3rem", // Adjust the height as needed
               }}
             />
           </Link>
