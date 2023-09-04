@@ -15,15 +15,26 @@ export default function Contact() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
   const checkFormValues = useMemo(() => {
-  
-      formValues.name && isValidEmail(formValues.email) && formValues.message;
-   
+    return (
+      formValues.name &&
+      isValidEmail(formValues.email) &&
+      formValues.message
+    );
   }, [formValues]);
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
+    if (!checkFormValues) {
+      setSnackbarMessage("Please fill in all fields correctly");
+      setSnackbarOpen(true);
+      return;
+    }
 
     const formData = new FormData();
     formData.append("name", formValues.name);
@@ -173,7 +184,6 @@ export default function Contact() {
               fullWidth
               variant="contained"
               disableElevation
-              disabled={!checkFormValues}
               onClick={onFormSubmit}
               sx={{
                 height: "3rem",
@@ -204,6 +214,20 @@ export default function Contact() {
           {snackbarMessage}
         </MuiAlert>
       </Snackbar>
+      <Snackbar
+      open={snackbarOpen}
+      autoHideDuration={6000}
+      onClose={handleSnackbarClose}
+    >
+      <MuiAlert
+        elevation={6}
+        variant="filled"
+        onClose={handleSnackbarClose}
+        severity="error"
+      >
+        {snackbarMessage}
+      </MuiAlert>
+    </Snackbar>
     </>
   );
 }
