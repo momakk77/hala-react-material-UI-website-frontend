@@ -84,8 +84,8 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
     return (
       formValues.name &&
       isValidEmail(formValues.email) &&
-      isValidPhoneNumber((formValues.phone || !formValues.phone)) &&
-      (formValues.message ||  !formValues.message)
+      isValidPhoneNumber(formValues.phone) &&
+      (formValues.message)
     );
   }, [formValues]);
 
