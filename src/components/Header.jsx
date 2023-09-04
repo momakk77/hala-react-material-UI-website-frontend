@@ -59,7 +59,7 @@ const Header = () => {
               sx={{
                 marginRight: "2px",
                 display: { xs: "none", md: "flex" },
-                width: "auto",
+                //width: "auto",
                 //height: "1rem", // Adjust the height as needed
               }}
             />
