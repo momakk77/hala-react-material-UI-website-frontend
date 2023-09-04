@@ -1,6 +1,5 @@
-
 import { styled } from "@mui/material/styles";
-import { Box, Grid, Typography, withWidth } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -14,7 +13,7 @@ const Img = styled("img")((props) => ({
   objectFit: "contain",
   height: "90vh",
   margin: "auto",
-  }));
+}));
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -25,14 +24,12 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-
 function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
 
   return (
     <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
       {children}
-      
     </DialogTitle>
   );
 }
@@ -41,27 +38,21 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-
 const PhotoExpandDialog = ({ open, setOpen, imageId }) => {
+  const [getImage, setGetImage] = useState({
+    imagePath: "",
+  });
+  const [loading, setLoading] = useState(false);
 
-    const [getImage, setGetImage] = useState({
-        imagePath: "", 
-});
-    const [loading, setLoading] = useState(false);
-
-
-const config = {
+  const config = {
     headers: {
       "content-type": "multipart/form-data",
     },
   };
- 
+
   const getAImage = async (imageId) => {
     try {
-      const res = await axios.get(
-        `/api/image/${imageId}`,
-        config
-      );
+      const res = await axios.get(`/api/image/${imageId}`, config);
       console.log(res.data);
       setGetImage({
         ...res.data.data,
@@ -76,6 +67,7 @@ const config = {
   useEffect(() => {
     imageId && getAImage(imageId);
   }, [imageId]);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -83,52 +75,52 @@ const config = {
     setOpen(false);
   };
 
+  // Check if the screen is extra-small (xs)
   const isXsScreen = useMediaQuery((theme) => theme.breakpoints.down("xs"));
 
+  // Determine whether to show the dialog based on the screen size
   const shouldShowDialog = !isXsScreen;
 
   return (
     <>
-    {shouldShowDialog && (
-      <BootstrapDialog
-        fullWidth
-        maxWidth={{sm: "lg"}}
-        sx={{
-          "& .MuiPaper-root": {
-            background: "transparent",
-            boxShadow: "none"
-          },
-        
-        }}
-        onClose={handleClose}
-        open={open}
-        BackdropProps={{
-            style: { backgroundColor: "rgba(0, 0, 0, 0.9)" }, 
+      {shouldShowDialog && (
+        <BootstrapDialog
+          fullWidth
+          maxWidth={{ sm: "lg" }}
+          sx={{
+            "& .MuiPaper-root": {
+              background: "transparent",
+              boxShadow: "none",
+            },
           }}
-      >
-        
-        {loading ? (
-              <Img
-                src={`/${getImage.imagePath}`}
-                alt=""
-              />
-            ) : (
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "650px",
-                }}
-              >
-                <CircularProgress style={{ 
+          onClose={handleClose}
+          open={open}
+          BackdropProps={{
+            style: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
+          }}
+        >
+          {loading ? (
+            <Img src={`/${getImage.imagePath}`} alt="" />
+          ) : (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "650px",
+              }}
+            >
+              <CircularProgress
+                style={{
                   color: "var(--unnamed-color-9f8965)",
-                 }}/>
-              </Box>
-            )}
-      </BootstrapDialog>
+                }}
+              />
+            </Box>
+          )}
+        </BootstrapDialog>
       )}
     </>
   );
 };
+
 export default PhotoExpandDialog;
