@@ -73,7 +73,7 @@ const PhotoExpandDialog = ({ open, setOpen, imageId }) => {
     return (
       <BootstrapDialog
         fullWidth
-        maxWidth={{ sm: "xl" }}
+        maxWidth= "md" 
         sx={{
           "& .MuiPaper-root": {
             background: "transparent",
