@@ -56,11 +56,11 @@ const Header = () => {
         <img
               src={halaAlAbadImage}
               alt="Hala AlAbad"
-              sx={{
+              style={{
                 marginRight: "2px",
                 display: { xs: "none", md: "flex" },
-                //width: "auto",
-                //height: "1rem", // Adjust the height as needed
+                width: "30px",
+                height: "30px", // Adjust the height as needed
               }}
             />
           </Link>
