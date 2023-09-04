@@ -60,7 +60,7 @@ const Header = () => {
                 marginRight: "2px",
                 display: { xs: "none", md: "flex" },
                 width: "auto",
-                height: "2rem", // Adjust the height as needed
+                //height: "1rem", // Adjust the height as needed
               }}
             />
           </Link>
