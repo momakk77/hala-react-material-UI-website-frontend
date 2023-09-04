@@ -16,7 +16,7 @@ export default function Contact() {
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
   function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(email);
   }
 
