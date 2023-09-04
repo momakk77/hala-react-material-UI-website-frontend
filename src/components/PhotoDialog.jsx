@@ -83,9 +83,9 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
   const checkFormValues = useMemo(() => {
     return (
       formValues.name &&
-      isValidEmail(formValues.email)&&
-      isValidPhoneNumber(formValues.phone) &&
-      formValues.message
+      isValidEmail(formValues.email) &&
+      isValidPhoneNumber(formValues.phone) || "" &&
+      formValues.message || ""
     );
   }, [formValues]);
 
