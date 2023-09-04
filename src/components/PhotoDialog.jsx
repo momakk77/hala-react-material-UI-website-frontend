@@ -65,7 +65,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
     return emailRegex.test(email);
   }
   function isValidPhoneNumber(phoneNumber) {
-    const phoneRegex = /^\d{10}$/; // Matches a 10-digit phone number
+    const phoneRegex = /^\d{10}$/; 
     return phoneRegex.test(phoneNumber);
   }
   const handleClickOpen = () => {
@@ -85,7 +85,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
       formValues.name &&
       isValidEmail(formValues.email) &&
       isValidPhoneNumber(formValues.phone) &&
-      (formValues.message)
+      formValues.message
     );
   }, [formValues]);
 
