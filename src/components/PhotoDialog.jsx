@@ -11,6 +11,8 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import React, { useEffect, useState, useMemo } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -27,6 +29,7 @@ const Img = styled("img")({
   objectFit: "cover",
   margin: "auto",
 });
+
 
 function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
@@ -57,6 +60,14 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const PhotoDialog = ({ open, setOpen, imageId }) => {
+  function isValidEmail(email) {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return emailRegex.test(email);
+  }
+  function isValidPhoneNumber(phoneNumber) {
+    const phoneRegex = /^\d{10}$/; // Matches a 10-digit phone number
+    return phoneRegex.test(phoneNumber);
+  }
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -66,19 +77,27 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
   const [getImage, setGetImage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({});
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const checkFormValues = useMemo(() => {
     return (
       formValues.name &&
-      formValues.email &&
-      formValues.phone &&
+      isValidEmail(formValues.email)&&
+      isValidPhoneNumber(formValues.phone) &&
       formValues.message
     );
   }, [formValues]);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-
+    if (!checkFormValues) {
+      setSnackbarMessage(
+        "Please fill in all fields correctly and make the email and the phone number valid."
+      );
+      setSnackbarOpen(true);
+      return;
+    }
     const formData = new FormData();
     formData.append("name", formValues.name);
     formData.append("email", formValues.email);
@@ -93,8 +112,9 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
     axios
       .post("/api/request/enquire", formData, config)
       .then((response) => {
-        setOpen(false);
-        console.log("ssss");
+      setOpen(false);
+      setSnackbarMessage("Enquire sent successfully");
+      setSnackbarOpen(true);
         setFormValues({
           name: "",
           email: "",
@@ -104,7 +124,8 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
       })
       .catch((err) => {
         console.log(err);
-        // console.log("error sending");
+        setSnackbarMessage("Error sending the enquire");
+        setSnackbarOpen(true);
       });
   };
 
@@ -113,6 +134,8 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
       "content-type": "multipart/form-data",
     },
   };
+
+
   const getAImage = async (imageId) => {
     try {
       const res = await axios.get(`/api/image/${imageId}`, config);
@@ -127,6 +150,12 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
     imageId && getAImage(imageId);
   }, [imageId]);
 
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
   return (
     <>
       <BootstrapDialog
@@ -369,7 +398,6 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
               <Button
                 variant="contained"
                 disableElevation
-                disabled={!checkFormValues}
                 onClick={onFormSubmit}
                 sx={{
                   "&:hover": {
@@ -394,6 +422,22 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
           </Grid>
         </Box>
       </BootstrapDialog>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          onClose={handleSnackbarClose}
+          severity={
+            snackbarMessage.includes("successfully") ? "success" : "error"
+          }
+        >
+          {snackbarMessage}
+        </MuiAlert>
+      </Snackbar>
     </>
   );
 };
