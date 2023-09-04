@@ -60,12 +60,12 @@ const Header = () => {
                 marginRight: "2px",
                 display: { xs: "none", md: "flex" },
                 width: "auto",
-                height: "5rem", // Adjust the height as needed
+                height: "2rem", // Adjust the height as needed
               }}
             />
           </Link>
           <Link to="/" style={{ textDecoration: "none" }}>
-          <img
+          {/* <img
               src={halaAlAbadImage}
               alt="Hala AlAbad"
               sx={{
@@ -74,7 +74,7 @@ const Header = () => {
                 width: "auto",
                 height: "3rem", // Adjust the height as needed
               }}
-            />
+            /> */}
           </Link>
           <Box
             sx={{
