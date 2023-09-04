@@ -19,12 +19,14 @@
     "@mui/material": "^5.13.2",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "formik": "^2.4.3",
     "icons": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
-    "react-share": "^4.4.1"
+    "react-share": "^4.4.1",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

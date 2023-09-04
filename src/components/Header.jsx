@@ -64,18 +64,6 @@ const Header = () => {
               }}
             />
           </Link>
-          <Link to="/" style={{ textDecoration: "none" }}>
-          {/* <img
-              src={halaAlAbadImage}
-              alt="Hala AlAbad"
-              sx={{
-                marginRight: "2px",
-                display: { xs: "flex", md: "none" },
-                width: "auto",
-                height: "3rem", // Adjust the height as needed
-              }}
-            /> */}
-          </Link>
           <Box
             sx={{
               justifyContent: "flex-end",
@@ -87,7 +75,6 @@ const Header = () => {
             <IconButton
               size="large"
               aria-label="account of current user"
-              //aria-controls="menu-appbar"
               aria-haspopup="true"
             >
               <MenuIcon />
