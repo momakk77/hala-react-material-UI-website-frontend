@@ -15,23 +15,40 @@ export default function Contact() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  const isNameValid = formValues.name && formValues.name.trim() !== "";
+  const isMessageValid = formValues.message && formValues.message.trim() !== "";
   function isValidEmail(email) {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(email);
   }
+  const isEmailValid = formValues.email && isValidEmail(formValues.email);
+  const isFormValid = isNameValid && isEmailValid && isMessageValid;
 
   const checkFormValues = useMemo(() => {
     return (
-      formValues.name &&
-      isValidEmail(formValues.email) &&
-      formValues.message
+      formValues.name && isEmailValid(formValues.email) && formValues.message
     );
   }, [formValues]);
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
-    if (!checkFormValues) {
-      setSnackbarMessage("Please fill in all fields correctly and make the email valid");
+
+    if (!isNameValid) {
+      setSnackbarMessage("Please fill the name field");
+      setSnackbarOpen(true);
+      return;
+    }
+
+    if (!isEmailValid) {
+      setSnackbarMessage(
+        "Please fill the email field and make the email valid"
+      );
+      setSnackbarOpen(true);
+      return;
+    }
+
+    if (!isMessageValid) {
+      setSnackbarMessage("Please fill the message field");
       setSnackbarOpen(true);
       return;
     }
@@ -200,19 +217,29 @@ export default function Contact() {
         </Grid>
       </Grid>
       <Snackbar
-  open={snackbarOpen}
-  autoHideDuration={6000}
-  onClose={handleSnackbarClose}
->
-  <MuiAlert
-    elevation={6}
-    variant="filled"
-    onClose={handleSnackbarClose}
-    severity={snackbarMessage.includes("successfully") ? "success" : "error"}
-  >
-    {snackbarMessage}
-  </MuiAlert>
-</Snackbar>
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          onClose={handleSnackbarClose}
+          severity={
+            isFormValid
+              ? "success"
+              : isNameValid && isEmailValid && isMessageValid
+              ? "info"
+              : "error"
+          }
+        >
+          {isFormValid
+            ? "Email sent successfully"
+            : isNameValid && isEmailValid && isMessageValid
+            ? "Please fill in all fields"
+            : "Please correct the form errors"}
+        </MuiAlert>
+      </Snackbar>
     </>
   );
 }
