@@ -7,7 +7,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Img = styled("img")((props) => ({
   display: "block",
@@ -83,8 +83,9 @@ const config = {
     setOpen(false);
   };
 
+  const isXsScreen = useMediaQuery((theme) => theme.breakpoints.down("xs"));
 
-  const shouldShowDialog = width !== "xs";
+  const shouldShowDialog = !isXsScreen;
 
   return (
     <>
@@ -125,11 +126,9 @@ const config = {
                  }}/>
               </Box>
             )}
-         
-
       </BootstrapDialog>
       )}
     </>
   );
 };
-export default withWidth()(PhotoExpandDialog);
+export default PhotoExpandDialog;
