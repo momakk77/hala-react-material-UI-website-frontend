@@ -58,8 +58,8 @@ const Header = () => {
               alt="Hala AlAbad"
               style={{
              
-                width: "140px",
-                height: "80px", 
+                width: "145px",
+                height: "90px", 
               }}
             />
           </Link>
