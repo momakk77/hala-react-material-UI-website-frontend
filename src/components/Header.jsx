@@ -58,7 +58,6 @@ const Header = () => {
               alt="Hala AlAbad"
               style={{
                 marginRight: "2px",
-                display: { xs: "none", md: "flex" },
                 width: {md: "150px", xs: "125px"},
                 height: "100px", 
               }}
