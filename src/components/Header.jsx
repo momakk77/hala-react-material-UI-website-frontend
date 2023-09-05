@@ -56,9 +56,9 @@ const Header = () => {
         <img
               src={halaAlAbadImage}
               alt="Hala AlAbad"
-              sx={{
-                // marginRight: "2px",
-                width: {md: "150px", xs: "125px"},
+              style={{
+             
+                width: "125px",
                 height: "100px", 
               }}
             />
