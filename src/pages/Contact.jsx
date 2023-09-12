@@ -22,7 +22,7 @@ export default function Contact() {
 
   const checkFormValues = useMemo(() => {
     return (
-      formValues.name && isValidEmail(formValues.email) && formValues.message
+      formValues.name && formValues.email && formValues.message
     );
   }, [formValues]);
 
@@ -30,8 +30,13 @@ export default function Contact() {
     e.preventDefault();
     if (!checkFormValues) {
       setSnackbarMessage(
-        "Please fill in all fields correctly and make the email valid."
+        "Please fill in all fields correctly"
       );
+      setSnackbarOpen(true);
+      return;
+    }
+    if (!isValidEmail(formValues.email)) {
+      setSnackbarMessage("Please make the email valid.");
       setSnackbarOpen(true);
       return;
     }
