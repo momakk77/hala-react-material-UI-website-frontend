@@ -97,7 +97,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
       setSnackbarOpen(true);
       return;
     }
-    if (!isValidPhoneNumber(formValues.phone)) {
+    if (!isValidPhoneNumber(formValues.phone) && formValues.phone !== "") {
       setSnackbarMessage("Please make the phone number valid.");
       setSnackbarOpen(true);
       return;
