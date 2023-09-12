@@ -83,7 +83,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
   const checkFormValues = useMemo(() => {
     return (
       formValues.name &&
-      isValidEmail(formValues.email)
+      formValues.email
     );
   }, [formValues]);
 
@@ -91,9 +91,12 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
     e.preventDefault();
    
     if (!checkFormValues) {
-      setSnackbarMessage(
-        "Please fill name and email fields correctly and make the email valid."
-      );
+      setSnackbarMessage("Please fill name and email fields");
+      setSnackbarOpen(true);
+      return;
+    }
+    if (!isValidEmail(formValues.email)) {
+      setSnackbarMessage("Please make the email valid.");
       setSnackbarOpen(true);
       return;
     }
