@@ -65,7 +65,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
     return emailRegex.test(email);
   }
   function isValidPhoneNumber(phoneNumber) {
-    const phoneRegex = /^(\+\d{1,})?\d{10}$/;
+    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
     return phoneRegex.test(phoneNumber);
   }
   const handleClickOpen = () => {
