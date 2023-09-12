@@ -65,7 +65,7 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
     return emailRegex.test(email);
   }
   function isValidPhoneNumber(phoneNumber) {
-    const phoneRegex = /^\d{10}$/; 
+    const phoneRegex = /^(\+\d{1,})?\d{10}$/;
     return phoneRegex.test(phoneNumber);
   }
   const handleClickOpen = () => {
@@ -82,10 +82,9 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
 
   const checkFormValues = useMemo(() => {
     return (
-      formValues.name &&
+      formValues.name.trim() !== "" &&
       isValidEmail(formValues.email) &&
-      isValidPhoneNumber(formValues.phone) &&
-      formValues.message
+      (formValues.phone.trim() === "" || isValidPhoneNumber(formValues.phone))
     );
   }, [formValues]);
 
