@@ -89,14 +89,16 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    if (!isValidPhoneNumber(formValues.phone)) {
-      setSnackbarMessage("Please make the phone number valid.");
-      return;
-    }
+   
     if (!checkFormValues) {
       setSnackbarMessage(
         "Please fill name and email fields correctly and make the email valid."
       );
+      setSnackbarOpen(true);
+      return;
+    }
+    if (!isValidPhoneNumber(formValues.phone)) {
+      setSnackbarMessage("Please make the phone number valid.");
       setSnackbarOpen(true);
       return;
     }
