@@ -81,22 +81,19 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const checkFormValues = useMemo(() => {
-    const isNameValid = formValues.name && formValues.name.trim() !== "";
-    const isEmailValid = isValidEmail(formValues.email);
-    const isPhoneValid =
-      formValues.phone === "" || isValidPhoneNumber(formValues.phone);
-  
-    // Check if the message is undefined or not empty
-    const isMessageValid = typeof formValues.message === "undefined" || formValues.message.trim() !== "";
-  
-    return isNameValid && isEmailValid && isPhoneValid && isMessageValid;
+    return (
+      formValues.name &&
+      isValidEmail(formValues.email) &&
+      isValidPhoneNumber(formValues.phone) &&
+      formValues.message
+    );
   }, [formValues]);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
     if (!checkFormValues) {
       setSnackbarMessage(
-        "Please fill name and email fields correctly and make the email and the phone number valid."
+        "Please fill in all fields correctly and make the email and the phone number valid."
       );
       setSnackbarOpen(true);
       return;
