@@ -274,7 +274,7 @@ const Photo = () => {
                 opacity: 1,
               }}
             >
-             {getImage.sizeInch} in
+             {getImage.sizeInch}
             </Typography>
             <Typography
               sx={{
