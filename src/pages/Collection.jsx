@@ -17,8 +17,8 @@ const Img = styled("img")({
 
 const Collection = () => {
   const [getAllImages, setGetAllImages] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState();
-  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState("Ink On Paper");
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [getAllCategories, setGetAllCategories] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
   const [loading, setLoading] = useState(false);
