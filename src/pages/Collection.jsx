@@ -17,7 +17,7 @@ const Img = styled("img")({
 
 const Collection = () => {
   const [getAllImages, setGetAllImages] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(0);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [getAllCategories, setGetAllCategories] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
@@ -47,12 +47,6 @@ const Collection = () => {
     }
   };
   useEffect(() => {
-    if (getAllCategories.length > 0) {
-      setSelectedCategory(getAllCategories[0].category);
-      setSelectedCategoryIndex(0);
-    }
-    
-    // Fetch images and categories
     getImages();
     getCategories();
   }, [selectedCategory, selectedLimit]);
