@@ -235,8 +235,8 @@ const PhotoDialog = ({ open, setOpen, imageId }) => {
                   }}
                 >
                   {getImage.title},
-                  <br /> {getImage.description} <br /> {getImage.size} <br /> 22
-                  1/8x 29 7/8 in <br /> Framed
+                  <br /> {getImage.description} <br /> {getImage.size} <br /> {getImage.sizeInch}
+                  in <br /> {getImage.framed}
                 </Typography>
               </Grid>
             </Grid>
