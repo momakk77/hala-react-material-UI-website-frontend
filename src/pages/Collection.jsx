@@ -103,11 +103,7 @@ const Collection = () => {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              {loading &&
-                [
-                  { _id: "All", category: "All" },
-                  ...(getAllCategories ?? []),
-                ].map((getCategories, index) => (
+              {loading && getAllCategories?.map((getCategories, index) => (
                   <Button
                     key={getCategories._id}
                     onClick={() => {
@@ -142,11 +138,7 @@ const Collection = () => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {loading &&
-              [
-                { _id: "All", category: "All" },
-                ...(getAllCategories ?? []),
-              ].map((getCategories, index) => (
+            {loading && getAllCategories?.map((getCategories, index) => (
                 <Button
                   key={getCategories._id}
                   onClick={() => {
@@ -169,7 +161,7 @@ const Collection = () => {
                 >
                   {getCategories.category}
                 </Button>
-              ))}
+             ))}
           </Box>
         </Toolbar>
       </AppBar>
@@ -232,7 +224,7 @@ const Collection = () => {
             </Grid>
           ))}
       </Grid>
-      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container
@@ -270,7 +262,7 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container
