@@ -18,7 +18,7 @@ const Img = styled("img")({
 const Collection = () => {
   const [getAllImages, setGetAllImages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(1);
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [getAllCategories, setGetAllCategories] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -224,7 +224,7 @@ const Collection = () => {
             </Grid>
           ))}
       </Grid>
-      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container
@@ -262,7 +262,7 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container
