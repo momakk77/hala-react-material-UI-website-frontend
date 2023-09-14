@@ -45,6 +45,7 @@ const Img = styled("img")((props) => ({
     height: "100vh",
   },
 }));
+// const framed = ["Framed", "notFramed"];
 
 function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
@@ -273,7 +274,7 @@ const Photo = () => {
                 opacity: 1,
               }}
             >
-              22 1/8x 29 7/8 in
+             {getImage.sizeInch} in
             </Typography>
             <Typography
               sx={{
@@ -284,7 +285,7 @@ const Photo = () => {
                 paddingBottom: "40px",
               }}
             >
-              Framed
+              {getImage.framed}
             </Typography>
             <Button
               onClick={() => {
