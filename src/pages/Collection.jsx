@@ -19,7 +19,7 @@ const Collection = () => {
   const [getAllImages, setGetAllImages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
-  const [getAllCategories, setGetAllCategories] = useState([]);
+  const [getAllCategories, setGetAllCategories] = useState([1]);
   const [selectedPage, setSelectedPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [selectedLimit, setSelectedLimit] = useState(8);
@@ -105,7 +105,7 @@ const Collection = () => {
             >
               {loading &&
                 [
-                  { _id: "Ink On Paper", category: "Ink On Paper" },
+                  { _id: "All", category: "All" },
                   ...(getAllCategories ?? []),
                 ].map((getCategories, index) => (
                   <Button
@@ -142,11 +142,7 @@ const Collection = () => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {loading &&
-                [
-                  { _id: "Ink On Paper", category: "Ink On Paper" },
-                  ...(getAllCategories ?? []),
-                ].map((getCategories, index) => (
+            {loading && getAllCategories?.map((getCategories, index) => (
                 <Button
                   key={getCategories._id}
                   onClick={() => {
@@ -169,7 +165,7 @@ const Collection = () => {
                 >
                   {getCategories.category}
                 </Button>
-             ))}
+             ) )}
           </Box>
         </Toolbar>
       </AppBar>
@@ -232,7 +228,7 @@ const Collection = () => {
             </Grid>
           ))}
       </Grid>
-      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container
@@ -270,7 +266,7 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container
