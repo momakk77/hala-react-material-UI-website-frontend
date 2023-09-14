@@ -238,7 +238,7 @@ const Collection = () => {
             // key={page}
             onClick={() => {
               handleCloseNavMenu();
-              setSelectedLimit(selectedLimit * 2);
+              setSelectedLimit(selectedLimit + 8);
             }}
             variant="contained"
             disableElevation
