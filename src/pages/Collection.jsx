@@ -19,7 +19,7 @@ const Collection = () => {
   const [getAllImages, setGetAllImages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
-  const [getAllCategories, setGetAllCategories] = useState([2]);
+  const [getAllCategories, setGetAllCategories] = useState([1]);
   const [selectedPage, setSelectedPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [selectedLimit, setSelectedLimit] = useState(8);
@@ -103,11 +103,7 @@ const Collection = () => {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              {loading &&
-                [
-                  { _id: "All", category: "All" },
-                  ...(getAllCategories ?? []),
-                ].map((getCategories, index) => (
+              {loading && getAllCategories?.map((getCategories, index) => (
                   <Button
                     key={getCategories._id}
                     onClick={() => {
