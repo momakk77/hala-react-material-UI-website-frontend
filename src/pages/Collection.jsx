@@ -103,7 +103,11 @@ const Collection = () => {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              {loading && getAllCategories?.map((getCategories, index) => (
+              {loading &&
+                [
+                  { _id: "Ink On Paper", category: "Ink On Paper" },
+                  ...(getAllCategories ?? []),
+                ].map((getCategories, index) => (
                   <Button
                     key={getCategories._id}
                     onClick={() => {
@@ -138,7 +142,11 @@ const Collection = () => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {loading && getAllCategories?.map((getCategories, index) => (
+            {loading &&
+                [
+                  { _id: "Ink On Paper", category: "Ink On Paper" },
+                  ...(getAllCategories ?? []),
+                ].map((getCategories, index) => (
                 <Button
                   key={getCategories._id}
                   onClick={() => {
