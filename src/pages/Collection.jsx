@@ -193,7 +193,7 @@ const Collection = () => {
                 sx={{ flex: 2, display: "flex", alignItems: "center" }}
               >
                 <Link
-                  to={navigateToPhoto}
+                   to={`/photo/${getImages._id}?category=${selectedCategory}`}
                   style={{ display: "block" }}
                 >
                   {loading ? (
