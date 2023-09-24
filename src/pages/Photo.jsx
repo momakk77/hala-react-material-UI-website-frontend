@@ -85,7 +85,7 @@ const Photo = () => {
       "content-type": "multipart/form-data",
     },
   };
-  const { id } = useParams();
+  const { id, category } = useParams();
   const getAImage = async (id) => {
     try {
       const res = await axios.get(`/api/image/${id}`, config);
@@ -172,7 +172,7 @@ const Photo = () => {
             sx={{
               color: "#ACACAC",
             }}
-            onClick={() => navigate("/collection")}
+            onClick={() => navigate(`/collection/${category}`)}
           >
             <CloseIcon sx={{ fontSize: "larger" }} />
           </IconButton>
@@ -219,7 +219,7 @@ const Photo = () => {
             alignSelf={"center"}
             sx={{
               alignSelf: { xs: "flex-start", sm: "center" },
-              marginTop: { sm: "0px"},
+              marginTop: { sm: "0px" },
             }}
           >
             <Typography
@@ -274,7 +274,7 @@ const Photo = () => {
                 opacity: 1,
               }}
             >
-             {getImage.sizeInch}
+              {getImage.sizeInch}
             </Typography>
             <Typography
               sx={{
@@ -349,9 +349,11 @@ const Photo = () => {
                   height: "650px",
                 }}
               >
-                <CircularProgress style={{ 
-                  color: "var(--unnamed-color-9f8965)",
-                 }}/>
+                <CircularProgress
+                  style={{
+                    color: "var(--unnamed-color-9f8965)",
+                  }}
+                />
               </Box>
             )}
           </Grid>
