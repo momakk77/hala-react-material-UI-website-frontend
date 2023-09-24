@@ -16,6 +16,9 @@ const Img = styled("img")({
 });
 
 const Collection = () => {
+  const navigateToPhoto = (id) => {
+    navigate(`/photo/${id}/${selectedCategory}`);
+  };
   const [getAllImages, setGetAllImages] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Broken");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
@@ -183,7 +186,7 @@ const Collection = () => {
                 sx={{ flex: 2, display: "flex", alignItems: "center" }}
               >
                 <Link
-                  to={`/photo/${getImages._id}`}
+                  to={`/photo/${getImages._id}/${selectedCategory}`}
                   style={{ display: "block" }}
                 >
                   {loading ? (

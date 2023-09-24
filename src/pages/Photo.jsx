@@ -87,7 +87,8 @@ const Photo = () => {
       "content-type": "multipart/form-data",
     },
   };
-  const { id } = useParams();
+  const navigate = useNavigate();
+  const { id, category } = useParams();
   const getAImage = async (id) => {
     try {
       const res = await axios.get(`/api/image/${id}`, config);
@@ -114,7 +115,7 @@ const Photo = () => {
   };
   const handleClose = () => {
     // Navigate back to the Collection page with the selected category
-    navigate(`/collection/${selectedCategory}`);
+    navigate(`/collection/${category}`);
   };
   const handleClickOpenImage = (id) => {
     setSelectedImageId(id);
@@ -129,7 +130,6 @@ const Photo = () => {
   const handleCloseShare = () => {
     setOpenShare(false);
   };
-  const navigate = useNavigate();
   const navigateImage = (id) => {
     id && navigate(`/photo/${id}`);
   };
