@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="photo/:id/:category" element={<Photo />} />
+          <Route path="photo/:id" element={<Photo />} />
           <Route path="menu" element={<Menu />} />
           <Route path="/" element={<Layout />}>
             <Route path="collection" element={<Collection />} />
