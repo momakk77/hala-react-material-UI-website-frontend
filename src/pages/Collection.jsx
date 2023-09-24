@@ -24,16 +24,6 @@ const Collection = () => {
   const [loading, setLoading] = useState(false);
   const [selectedLimit, setSelectedLimit] = useState(8);
 
-  const navigate = useNavigate();
-
-
-
-  // Inside the click handler for opening a photo
-  const navigateToPhoto = (id) => {
-    navigate(`/photo/${id}/${selectedCategory}`);
-  };
-
-
   const getImages = async () => {
     try {
       const res = await axios.get(
@@ -61,7 +51,7 @@ const Collection = () => {
     getCategories();
   }, [selectedCategory, selectedLimit]);
 
-  
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -193,7 +183,7 @@ const Collection = () => {
                 sx={{ flex: 2, display: "flex", alignItems: "center" }}
               >
                 <Link
-                   to={`/photo/${getImages._id}?category=${selectedCategory}`}
+                  to={`/photo/${getImages._id}`}
                   style={{ display: "block" }}
                 >
                   {loading ? (
@@ -272,7 +262,7 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container

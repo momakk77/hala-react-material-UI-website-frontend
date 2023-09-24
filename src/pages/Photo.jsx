@@ -22,6 +22,7 @@ import axios from "axios";
 import PhotoExpandDialog from "../components/PhotoExpandDialog";
 import CircularProgress from "@mui/material/CircularProgress";
 
+
 const Img = styled("img")((props) => ({
   display: "block",
   objectFit: "contain",
@@ -86,8 +87,6 @@ const Photo = () => {
     },
   };
   const { id } = useParams();
-  const [searchParams] = useSearchParams();
-  const category = searchParams.get("category");
   const getAImage = async (id) => {
     try {
       const res = await axios.get(`/api/image/${id}`, config);
@@ -174,7 +173,7 @@ const Photo = () => {
             sx={{
               color: "#ACACAC",
             }}
-            onClick={() => navigate(`/collection/${category}`)}
+            onClick={() => navigate("/collection")}
           >
             <CloseIcon sx={{ fontSize: "larger" }} />
           </IconButton>
@@ -221,7 +220,7 @@ const Photo = () => {
             alignSelf={"center"}
             sx={{
               alignSelf: { xs: "flex-start", sm: "center" },
-              marginTop: { sm: "0px" },
+              marginTop: { sm: "0px"},
             }}
           >
             <Typography
@@ -276,7 +275,7 @@ const Photo = () => {
                 opacity: 1,
               }}
             >
-              {getImage.sizeInch}
+             {getImage.sizeInch}
             </Typography>
             <Typography
               sx={{
@@ -351,11 +350,9 @@ const Photo = () => {
                   height: "650px",
                 }}
               >
-                <CircularProgress
-                  style={{
-                    color: "var(--unnamed-color-9f8965)",
-                  }}
-                />
+                <CircularProgress style={{ 
+                  color: "var(--unnamed-color-9f8965)",
+                 }}/>
               </Box>
             )}
           </Grid>
