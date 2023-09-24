@@ -22,7 +22,6 @@ import axios from "axios";
 import PhotoExpandDialog from "../components/PhotoExpandDialog";
 import CircularProgress from "@mui/material/CircularProgress";
 
-
 const Img = styled("img")((props) => ({
   display: "block",
   objectFit: "contain",
@@ -77,7 +76,6 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const Photo = () => {
-  
   const [getImage, setGetImage] = useState([]);
   const [selectedImageId, setSelectedImageId] = useState("");
   const [loading, setLoading] = useState(false);
@@ -87,8 +85,7 @@ const Photo = () => {
       "content-type": "multipart/form-data",
     },
   };
-  const navigate = useNavigate();
-  const { id, category } = useParams();
+  const { id } = useParams();
   const getAImage = async (id) => {
     try {
       const res = await axios.get(`/api/image/${id}`, config);
@@ -114,8 +111,7 @@ const Photo = () => {
     setOpen(true);
   };
   const handleClose = () => {
-    // Navigate back to the Collection page with the selected category
-    navigate(`/collection/${category}`);
+    setOpen(false);
   };
   const handleClickOpenImage = (id) => {
     setSelectedImageId(id);
@@ -130,11 +126,11 @@ const Photo = () => {
   const handleCloseShare = () => {
     setOpenShare(false);
   };
+  const navigate = useNavigate();
   const navigateImage = (id) => {
     id && navigate(`/photo/${id}`);
   };
 
-  
   return (
     <>
       <Box sx={{ position: "relative", p: 8 }}>
@@ -176,7 +172,7 @@ const Photo = () => {
             sx={{
               color: "#ACACAC",
             }}
-            onClick={handleClose}
+            onClick={() => navigate("/collection")}
           >
             <CloseIcon sx={{ fontSize: "larger" }} />
           </IconButton>
