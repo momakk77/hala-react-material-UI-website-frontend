@@ -77,6 +77,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const Photo = () => {
+  
   const [getImage, setGetImage] = useState([]);
   const [selectedImageId, setSelectedImageId] = useState("");
   const [loading, setLoading] = useState(false);
@@ -112,7 +113,8 @@ const Photo = () => {
     setOpen(true);
   };
   const handleClose = () => {
-    setOpen(false);
+    // Navigate back to the Collection page with the selected category
+    navigate(`/collection/${selectedCategory}`);
   };
   const handleClickOpenImage = (id) => {
     setSelectedImageId(id);
@@ -132,6 +134,7 @@ const Photo = () => {
     id && navigate(`/photo/${id}`);
   };
 
+  
   return (
     <>
       <Box sx={{ position: "relative", p: 8 }}>
@@ -173,7 +176,7 @@ const Photo = () => {
             sx={{
               color: "#ACACAC",
             }}
-            onClick={() => navigate("/collection")}
+            onClick={handleClose}
           >
             <CloseIcon sx={{ fontSize: "larger" }} />
           </IconButton>
