@@ -17,7 +17,7 @@ const Img = styled("img")({
 
 const Collection = () => {
   const [getAllImages, setGetAllImages] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Broken");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [getAllCategories, setGetAllCategories] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
