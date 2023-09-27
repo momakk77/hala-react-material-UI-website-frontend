@@ -237,7 +237,7 @@ const Collection = () => {
         </Grid>
       )}
       {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
-      getAllImages.length < 8 || getAllImages.length == 8 && selectedLimit < getAllImages.length  ? null : (
+      getAllImages.length < 8 || getAllImages.length == 8 && selectedLimit > getAllImages.length  ? null : (
         <Grid
           container
           sx={{
