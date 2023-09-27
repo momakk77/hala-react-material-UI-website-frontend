@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import { useNavigate, Link, } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 
@@ -16,13 +16,15 @@ const Img = styled("img")({
 });
 
 const Collection = () => {
+  const [searchParams] = useSearchParams();
   const [getAllImages, setGetAllImages] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("Broken");
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") || "Broken");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [getAllCategories, setGetAllCategories] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [selectedLimit, setSelectedLimit] = useState(8);
+  console.log(searchParams.get("category"));
 
   const getImages = async () => {
     try {
