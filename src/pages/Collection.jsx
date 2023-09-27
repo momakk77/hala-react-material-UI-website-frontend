@@ -213,8 +213,7 @@ const Collection = () => {
             </Grid>
           ))}
       </Grid>
-      {imagesCount <= 8 ||
-      getAllImages.length % 8 === imagesCount % 8 ? null : (
+      {imagesCount <= 8 || getAllImages.length === imagesCount ? null : (
         <Grid
           container
           sx={{
@@ -252,7 +251,7 @@ const Collection = () => {
         </Grid>
       )}
       {imagesCount <= 8 ||
-      getAllImages.length % 8 === imagesCount % 8 ? null : (
+      getAllImages.length === imagesCount ? null : (
         <Grid
           container
           sx={{
