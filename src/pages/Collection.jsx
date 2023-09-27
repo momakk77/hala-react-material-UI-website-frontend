@@ -71,33 +71,7 @@ const Collection = () => {
         disableGutters
       >
         <Toolbar disableGutters>
-          {/* <Typography
-            sx={{
-              font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20) Red Hat Text",
-              color: "var(--unnamed-color-2c2a26)",
-              letterSpacing: 4,
-              textTransform: "uppercase",
-              display: { xs: "none", md: "flex" },
-              opacity: 1,
-              fontSize: "1.7rem",
-            }}
-          >
-            HALA ALABED
-          </Typography> */}
           <div>
-            {/* <Typography
-              sx={{
-                font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20) Red Hat Text",
-                color: "var(--unnamed-color-2c2a26)",
-                letterSpacing: 4,
-                textTransform: "uppercase",
-                display: { xs: "flex", md: "none" },
-                opacity: 1,
-                fontSize: "1.2rem",
-              }}
-            >
-              HALA ALABED
-            </Typography> */}
             <Grid
               sx={{
                 display: { xs: "flex", md: "none" },
@@ -224,7 +198,7 @@ const Collection = () => {
             </Grid>
           ))}
       </Grid>
-      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container
@@ -262,8 +236,7 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
-      getAllImages.length < 8 ? null : (
+      {getAllImages.length > 8 && selectedLimit > getAllImages.length ? (
         <Grid
           container
           sx={{
@@ -298,7 +271,7 @@ const Collection = () => {
             Load More
           </Button>
         </Grid>
-      )}
+      ): null}
     </>
   );
 };
