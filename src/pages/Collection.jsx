@@ -20,12 +20,21 @@ const Collection = () => {
   const [selectedCategory, setSelectedCategory] = useState(
     searchParams.get("category") || "Broken"
   );
-  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+  const [imagesCount, setImagesCount] = useState(0);
   const [getAllCategories, setGetAllCategories] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [selectedLimit, setSelectedLimit] = useState(8);
-  console.log(searchParams.get("category"));
+
+  const getImagesCount = async () => {
+    try {
+      const res = await axios.get(`/api/image?category=${selectedCategory}`);
+      console.log(res);
+      setImagesCount(res.data.length);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
 
   const getImages = async () => {
     try {
@@ -52,6 +61,7 @@ const Collection = () => {
   useEffect(() => {
     getImages();
     getCategories();
+    getImagesCount();
   }, [selectedCategory, selectedLimit]);
 
   const navigate = useNavigate();
@@ -241,8 +251,7 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {(getAllImages.length >= 7 && selectedLimit > getAllImages.length) ||
-      getAllImages.length < 8 ? null : (
+      {(getAllImages.length >= 8 && imagesCount > 8) && (
         <Grid
           container
           sx={{
