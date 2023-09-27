@@ -236,7 +236,8 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {getAllImages.length > 0 && selectedPage < Math.ceil(getAllImages.length / selectedLimit) ? (
+      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
+      getAllImages.length < 8 || getAllImages.length == 8 && selectedLimit > getAllImages.length  ? null : (
         <Grid
           container
           sx={{
@@ -248,7 +249,7 @@ const Collection = () => {
           <Button
             onClick={() => {
               handleCloseNavMenu();
-              setSelectedPage(selectedPage + 1);
+              setSelectedLimit(selectedLimit + 8);
             }}
             variant="contained"
             disableElevation
@@ -271,7 +272,7 @@ const Collection = () => {
             Load More
           </Button>
         </Grid>
-      ): null}
+      )}
     </>
   );
 };
