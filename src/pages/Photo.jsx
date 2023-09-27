@@ -172,7 +172,7 @@ const Photo = () => {
             sx={{
               color: "#ACACAC",
             }}
-            onClick={() => navigate("/collection")}
+            onClick={() => navigate("/collection?category=" + getImage.category)}
           >
             <CloseIcon sx={{ fontSize: "larger" }} />
           </IconButton>
