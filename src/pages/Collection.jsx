@@ -236,8 +236,7 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
-      getAllImages.length < 8 || selectedPage <= 1  ? null : (
+      {getAllImages.length > 0 && selectedPage < Math.ceil(getAllImages.length / selectedLimit) ? (
         <Grid
           container
           sx={{
@@ -272,7 +271,7 @@ const Collection = () => {
             Load More
           </Button>
         </Grid>
-      )}
+      ): null}
     </>
   );
 };
