@@ -9,7 +9,6 @@ import Button from "@mui/material/Button";
 import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import axios from "axios";
 
-
 const Img = styled("img")({
   maxWidth: "100%",
   maxHeight: "100%",
@@ -18,7 +17,9 @@ const Img = styled("img")({
 const Collection = () => {
   const [searchParams] = useSearchParams();
   const [getAllImages, setGetAllImages] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category") || "Broken");
+  const [selectedCategory, setSelectedCategory] = useState(
+    searchParams.get("category") || "Broken"
+  );
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [getAllCategories, setGetAllCategories] = useState([]);
   const [selectedPage, setSelectedPage] = useState(1);
@@ -79,17 +80,18 @@ const Collection = () => {
                 display: { xs: "flex", md: "none" },
               }}
             >
-              {loading && getAllCategories?.map((getCategories, index) => (
+              {loading &&
+                getAllCategories?.map((getCategories) => (
                   <Button
                     key={getCategories._id}
                     onClick={() => {
                       handleCloseNavMenu();
-                      setSelectedCategoryIndex(index);
+
                       setSelectedCategory(getCategories.category);
                     }}
                     sx={{
                       color:
-                        selectedCategoryIndex == index
+                        selectedCategory == getCategories.category
                           ? "var( --unnamed-color-9f8965)"
                           : "var(--unnamed-color-2c2a26)",
                       letterSpacing: "0.54px",
@@ -114,17 +116,17 @@ const Collection = () => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            {loading && getAllCategories?.map((getCategories, index) => (
+            {loading &&
+              getAllCategories?.map((getCategories) => (
                 <Button
                   key={getCategories._id}
                   onClick={() => {
                     handleCloseNavMenu();
-                    setSelectedCategoryIndex(index);
                     setSelectedCategory(getCategories.category);
                   }}
                   sx={{
                     color:
-                      selectedCategoryIndex == index
+                      selectedCategory == getCategories.category
                         ? "var( --unnamed-color-9f8965)"
                         : "var(--unnamed-color-2c2a26)",
                     display: "block",
@@ -137,7 +139,7 @@ const Collection = () => {
                 >
                   {getCategories.category}
                 </Button>
-             ) )}
+              ))}
           </Box>
         </Toolbar>
       </AppBar>
@@ -163,14 +165,15 @@ const Collection = () => {
                   style={{ display: "block" }}
                 >
                   {loading ? (
-                     <Img
-                     alt="complex"
-                     src={getImages.imagePath}
-                     sx={{ width: "100%", objectFit: "contain" }}
-                   />
-                    
+                    <Img
+                      alt="complex"
+                      src={getImages.imagePath}
+                      sx={{ width: "100%", objectFit: "contain" }}
+                    />
                   ) : (
-                    <CircularProgress style={{ color: "var(--unnamed-color-9f8965" }}/>
+                    <CircularProgress
+                      style={{ color: "var(--unnamed-color-9f8965" }}
+                    />
                   )}
                 </Link>
               </Grid>
@@ -238,7 +241,7 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-    {(getAllImages.length >= 7 && selectedLimit > getAllImages.length) ||
+      {(getAllImages.length >= 7 && selectedLimit > getAllImages.length) ||
       getAllImages.length < 8 ? null : (
         <Grid
           container
