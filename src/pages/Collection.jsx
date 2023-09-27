@@ -248,7 +248,7 @@ const Collection = () => {
           <Button
             onClick={() => {
               handleCloseNavMenu();
-              setSelectedLimit(selectedLimit + 8);
+              setSelectedPage(selectedPage + 1);
             }}
             variant="contained"
             disableElevation
