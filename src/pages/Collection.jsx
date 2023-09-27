@@ -251,42 +251,44 @@ const Collection = () => {
           </Button>
         </Grid>
       )}
-      {(getAllImages.length >= 8 && imagesCount > 8) && (
-        <Grid
-          container
-          sx={{
-            justifyContent: "center",
-            marginTop: "3rem",
-            display: { xs: "none", sm: "flex" },
-          }}
-        >
-          <Button
-            onClick={() => {
-              handleCloseNavMenu();
-              setSelectedLimit(selectedLimit + 8);
-            }}
-            variant="contained"
-            disableElevation
+      {getAllImages.length >= 8 &&
+        selectedLimit > getAllImages.length &&
+        imagesCount <= 8 ? null : (
+          <Grid
+            container
             sx={{
-              "&:hover": {
-                backgroundColor: "var(--unnamed-color-9f8965)",
-                opacity: 0.7,
-              },
-              background:
-                "var(--unnamed-color-9f8965) 0% 0% no-repeat padding-box",
-              color: "var(--unnamed-color-faf9e0)",
-              font: "normal normal normal 0.8rem Bodoni Moda",
-              letterSpacing: 3.2,
-              textTransform: "uppercase",
-              opacity: 1,
-              height: "2.5rem",
-              borderRadius: "2px",
+              justifyContent: "center",
+              marginTop: "3rem",
+              display: { xs: "none", sm: "flex" },
             }}
           >
-            Load More
-          </Button>
-        </Grid>
-      )}
+            <Button
+              onClick={() => {
+                handleCloseNavMenu();
+                setSelectedLimit(selectedLimit + 8);
+              }}
+              variant="contained"
+              disableElevation
+              sx={{
+                "&:hover": {
+                  backgroundColor: "var(--unnamed-color-9f8965)",
+                  opacity: 0.7,
+                },
+                background:
+                  "var(--unnamed-color-9f8965) 0% 0% no-repeat padding-box",
+                color: "var(--unnamed-color-faf9e0)",
+                font: "normal normal normal 0.8rem Bodoni Moda",
+                letterSpacing: 3.2,
+                textTransform: "uppercase",
+                opacity: 1,
+                height: "2.5rem",
+                borderRadius: "2px",
+              }}
+            >
+              Load More
+            </Button>
+          </Grid>
+        )}
     </>
   );
 };
