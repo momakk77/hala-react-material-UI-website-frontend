@@ -199,7 +199,7 @@ const Collection = () => {
           ))}
       </Grid>
       {(getAllImages.length >= 8 && selectedLimit > getAllImages.length) ||
-      getAllImages.length < 8 || selectedPage <= 1 ? null : (
+      getAllImages.length < 8 ? null : (
         <Grid
           container
           sx={{
@@ -237,7 +237,7 @@ const Collection = () => {
         </Grid>
       )}
       {(getAllImages.length > 8 && selectedLimit > getAllImages.length) ||
-      getAllImages.length < 8  ? null : (
+      getAllImages.length < 8 || selectedPage <= 1  ? null : (
         <Grid
           container
           sx={{
