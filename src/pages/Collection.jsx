@@ -171,7 +171,7 @@ const Collection = () => {
                 sx={{ flex: 2, display: "flex", alignItems: "center" }}
               >
                 <Link
-                  to={`/photo/${getImages._id}?${selectedCategory}`}
+                  to={`/photo/${getImages._id}?category=${getImages.category}`}
                   style={{ display: "block" }}
                 >
                   {loading ? (
