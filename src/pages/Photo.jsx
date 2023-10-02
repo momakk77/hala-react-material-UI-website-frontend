@@ -86,7 +86,7 @@ const Photo = () => {
     },
   };
   const { id , category} = useParams();
-  const getAImage = async (id) => {
+  const getAImage = async (id, category) => {
     try {
       const res = await axios.get(`/api/image/${id}?category=${category}`, config);
       console.log(res.data);
@@ -101,8 +101,8 @@ const Photo = () => {
   };
 
   useEffect(() => {
-    id && getAImage(id);
-  }, [id]);
+    id && category && getAImage(id, category);
+  }, [id, category]);
   const [open, setOpen] = React.useState(false);
   const [openShare, setOpenShare] = React.useState(false);
   const [openImage, setOpenImage] = React.useState(false);
