@@ -22,6 +22,7 @@ import axios from "axios";
 import PhotoExpandDialog from "../components/PhotoExpandDialog";
 import CircularProgress from "@mui/material/CircularProgress";
 
+
 const Img = styled("img")((props) => ({
   display: "block",
   objectFit: "contain",
@@ -76,19 +77,23 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const Photo = () => {
+  const [searchParams] = useSearchParams();
   const [getImage, setGetImage] = useState([]);
   const [selectedImageId, setSelectedImageId] = useState("");
   const [loading, setLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(
+    searchParams.get("category") || "Broken"
+  );
 
   const config = {
     headers: {
       "content-type": "multipart/form-data",
     },
   };
-  const { id , category} = useParams();
-  const getAImage = async (id, category) => {
+  const { id } = useParams();
+  const getAImage = async (id) => {
     try {
-      const res = await axios.get(`/api/image/${id}?category=${category}`, config);
+      const res = await axios.get(`/api/image/${id}?category=${selectedCategory}`, config);
       console.log(res.data);
       setGetImage({
         ...res.data.data,
@@ -101,8 +106,8 @@ const Photo = () => {
   };
 
   useEffect(() => {
-    id && category && getAImage(id, category);
-  }, [id, category]);
+    id && getAImage(id);
+  }, [id]);
   const [open, setOpen] = React.useState(false);
   const [openShare, setOpenShare] = React.useState(false);
   const [openImage, setOpenImage] = React.useState(false);
