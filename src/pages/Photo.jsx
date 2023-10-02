@@ -88,33 +88,11 @@ const Photo = () => {
   const { id } = useParams();
   const getAImage = async (id) => {
     try {
-      // Fetch the current image
       const res = await axios.get(`/api/image/${id}`, config);
-      const currentImage = {
+      console.log(res.data);
+      setGetImage({
         ...res.data.data,
         ...res.data,
-      };
-  
-      // Fetch images from the same category
-      const categoryImagesRes = await axios.get(`/api/images?category=${currentImage.category}`);
-      const categoryImages = categoryImagesRes.data; // Assuming the API returns an array of images
-  
-      // Find the index of the current image in the categoryImages array
-      const currentIndex = categoryImages.findIndex(image => image._id === currentImage._id);
-  
-      // Calculate the index of the previous and next images
-      const prevIndex = currentIndex - 1;
-      const nextIndex = currentIndex + 1;
-  
-      // Get the previous and next images
-      const prevImage = prevIndex >= 0 ? categoryImages[prevIndex] : null;
-      const nextImage = nextIndex < categoryImages.length ? categoryImages[nextIndex] : null;
-  
-      // Update state with current, previous, and next images
-      setGetImage({
-        current: currentImage,
-        prevImage,
-        nextImage,
       });
       setLoading(true);
     } catch (err) {
