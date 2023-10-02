@@ -85,10 +85,10 @@ const Photo = () => {
       "content-type": "multipart/form-data",
     },
   };
-  const { id } = useParams();
+  const { id , category} = useParams();
   const getAImage = async (id) => {
     try {
-      const res = await axios.get(`/api/image/${id}`, config);
+      const res = await axios.get(`/api/image/${id}?category=${category}`, config);
       console.log(res.data);
       setGetImage({
         ...res.data.data,
